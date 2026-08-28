@@ -416,6 +416,96 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-08-31',
     workbench: 'base64',
   },
+  {
+    slug: 'url-encoder-decoder',
+    name: 'URL Encoder & Decoder',
+    tagline: 'Encode text for safe use inside a URL, or decode percent-encoded text back to normal.',
+    metaDescription:
+      'Encode and decode URLs online for free. Safely encode URL components and decode percent-encoded text instantly in your browser. Fast, private, and easy to use.',
+    categoryId: 'encoding',
+    keywords: ['url encoder', 'url decoder', 'url encode online', 'url decode online', 'percent encoding', 'encodeuricomponent'],
+    h1: 'URL Encoder & Decoder',
+    intro: [
+      'Encode text so it\'s safe to use inside a URL — as a query parameter value, a path segment, or any user-provided text — or decode percent-encoded text back to normal. Both directions run entirely in your browser and handle Unicode correctly.',
+      'This tool uses component-style encoding (the same rules as JavaScript\'s encodeURIComponent), which is the right choice for encoding a single value that will sit inside a URL, as opposed to encoding an entire URI. Click "Sample" to see the difference in action.',
+    ],
+    details: [
+      {
+        heading: 'What is URL encoding and decoding?',
+        paragraphs: [
+          'URL encoding (also called percent-encoding) replaces characters that aren\'t safe to use directly inside a URL with a "%" followed by two hexadecimal digits representing that character\'s byte value — a space becomes %20, an "&" becomes %26, and so on. Decoding reverses the process, turning percent-encoded text back into the original characters.',
+        ],
+      },
+      {
+        heading: 'Why URLs need encoding, and what characters need it',
+        paragraphs: [
+          'URLs use certain characters structurally — & separates query parameters, = joins a key to its value, ? starts the query string, # starts a fragment, / separates path segments. If a value you want to put inside a URL contains one of those characters, or a space, or non-ASCII text, it has to be encoded first — otherwise the URL would be parsed incorrectly (or simply broken). Letters, digits, and a small set of punctuation (- _ . ! ~ * \' ( )) are left unencoded because they\'re already safe; almost everything else, including all Unicode text, gets percent-encoded.',
+        ],
+      },
+      {
+        heading: 'encodeURIComponent vs. encodeURI — and why "+" and "%20" can differ',
+        paragraphs: [
+          'JavaScript actually has two different encoding functions, and mixing them up is a common source of bugs. encodeURI() is for encoding a whole, already-structured URI — it deliberately leaves :, /, ?, &, and # alone, since those are meaningful delimiters in a full URL. encodeURIComponent() — what this tool uses — is for encoding a single component that will be inserted into a URL, so it encodes those same characters too, since inside a component they\'re just literal text, not delimiters.',
+          'You may also see spaces represented as "+" instead of "%20" — that\'s a separate, older convention specific to application/x-www-form-urlencoded (traditional HTML form submissions), not part of encodeURIComponent or the URL spec itself. This tool follows the standard encodeURIComponent behavior throughout: spaces become %20, and a literal "+" in your input is itself encoded to %2B rather than being left alone or treated as a space.',
+        ],
+      },
+      {
+        heading: 'Privacy — and this is encoding, not security',
+        paragraphs: [
+          'Encoding and decoding both run locally using your browser\'s built-in JavaScript engine — nothing you type or paste is ever uploaded to a server. And just like Base64, URL encoding is not encryption: it provides no confidentiality. Anyone can decode percent-encoded text instantly with no key required, so don\'t rely on it to protect sensitive information — use real encryption if confidentiality actually matters.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is URL encoding?',
+        answer:
+          'URL encoding (percent-encoding) replaces characters that aren\'t safe inside a URL with a "%" followed by two hex digits representing that character\'s byte value, so the resulting text can be safely used as a URL component.',
+      },
+      {
+        question: 'What is URL decoding?',
+        answer: 'URL decoding reverses percent-encoding, turning %-encoded text back into the original characters exactly as they were before encoding.',
+      },
+      {
+        question: 'How do I encode a URL?',
+        answer: 'Paste or type your text into the input box, make sure "Encode" is selected, and click it. The encoded result appears immediately on the right.',
+      },
+      {
+        question: 'How do I decode a URL?',
+        answer: 'Switch to "Decode," paste the percent-encoded text into the input box, and click "Decode." The original text appears on the right.',
+      },
+      {
+        question: 'What is the difference between encodeURI and encodeURIComponent?',
+        answer:
+          'encodeURI() encodes a whole URI and leaves structural characters like :, /, ?, &, and # alone, since they\'re meaningful delimiters in a full URL. encodeURIComponent() — used by this tool — encodes those characters too, because it\'s meant for a single value being inserted into a URL, where they\'re just literal text rather than delimiters.',
+      },
+      {
+        question: 'Why does a space become %20?',
+        answer: 'A space isn\'t a valid character inside a URL, so it\'s percent-encoded to its byte value in hex — 0x20 — giving %20. That\'s the standard encodeURIComponent (and URL spec) behavior this tool follows.',
+      },
+      {
+        question: 'Why is + sometimes used for spaces?',
+        answer:
+          'That convention comes from application/x-www-form-urlencoded (traditional HTML form submissions), not from encodeURIComponent or the general URL spec. This tool always encodes spaces as %20, and encodes a literal "+" in your input to %2B rather than leaving it as-is.',
+      },
+      {
+        question: 'Does URL encoding protect sensitive information?',
+        answer:
+          'No. URL encoding is not encryption and provides no confidentiality — anyone can decode it instantly with no key required. Never use it to protect sensitive data; use real encryption if confidentiality matters.',
+      },
+      {
+        question: 'Does this tool support Unicode?',
+        answer: 'Yes. Hindi, emoji, Chinese, Japanese, accented characters, and any other Unicode text are encoded and decoded correctly and round-trip exactly.',
+      },
+      {
+        question: 'Is my URL uploaded to a server?',
+        answer: 'No. Encoding and decoding both run entirely in your browser. Nothing you type or paste is ever sent over the network.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-01',
+    workbench: 'url',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {
