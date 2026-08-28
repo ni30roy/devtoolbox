@@ -1,0 +1,7 @@
+import { FileJsonIcon } from '@/components/icons/Icons'
+import type { WorkbenchKind } from './types'
+
+/** One icon per workbench kind — add an entry here when a new kind of tool ships. */
+export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
+  json: FileJsonIcon,
+}

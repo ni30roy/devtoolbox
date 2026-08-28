@@ -1,0 +1,17 @@
+import { lazy, type ComponentType } from 'react'
+import type { ToolMeta, WorkbenchKind } from './types'
+
+/**
+ * Maps a workbench kind to the (lazily-loaded, code-split) page component
+ * that renders it. Adding a new *kind* of tool means adding one entry here
+ * and one page component — every route is still driven by `toolsData.ts`,
+ * no router changes needed. Adding another tool of an *existing* kind
+ * (e.g. a 4th JSON tool) needs nothing here at all.
+ */
+const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> = {
+  json: lazy(() => import('@/pages/tools/JsonToolPage')),
+}
+
+export function getToolPageComponent(kind: WorkbenchKind) {
+  return workbenchPages[kind]
+}

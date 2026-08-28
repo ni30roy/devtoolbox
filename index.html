@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#4f46e5" />
+
+    <title>DevToolBox – Free Online Developer Tools</title>
+    <meta name="description" content="Free, fast developer utilities that run entirely in your browser. Format, validate, and minify JSON and more — no sign-up, no ads, no data ever leaves your device." />
+    <meta name="robots" content="index, follow" />
+    <!-- Overwritten with the real VITE_SITE_URL at build time by scripts/build-seo.ts -->
+    <link rel="canonical" href="https://your-production-domain.example/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DevToolBox" />
+    <meta property="og:title" content="DevToolBox – Free Online Developer Tools" />
+    <meta property="og:description" content="Free, fast developer utilities that run entirely in your browser. Format, validate, and minify JSON and more — no sign-up, no ads, no data ever leaves your device." />
+    <!-- Overwritten with the real VITE_SITE_URL at build time by scripts/build-seo.ts -->
+    <meta property="og:url" content="https://your-production-domain.example/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="DevToolBox – Free Online Developer Tools" />
+    <meta name="twitter:description" content="Free, fast developer utilities that run entirely in your browser. Format, validate, and minify JSON and more — no sign-up, no ads, no data ever leaves your device." />
+
+    <!--seo:structured-data-->
+
+    <script>
+      // Applied synchronously, before first paint, so there is no flash of
+      // the wrong theme. Kept in sync at runtime by src/hooks/useDarkMode.ts.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('devtoolbox-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          if (theme === 'dark') document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
