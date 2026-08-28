@@ -31,6 +31,11 @@ export const categories: ToolCategory[] = [
     name: 'Security',
     description: 'Inspect tokens and hashes — locally, without sending anything to a server.',
   },
+  {
+    id: 'generators',
+    name: 'Generators',
+    description: 'Generate UUIDs, passwords, and other values you need on demand.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -589,6 +594,79 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-02',
     workbench: 'jwt',
+  },
+  {
+    slug: 'uuid-generator',
+    name: 'UUID Generator',
+    tagline: 'Generate cryptographically random UUID v4 values, one or many at a time.',
+    metaDescription:
+      'Generate UUID v4 values online for free, using your browser\'s cryptographically secure random number generator. Generate one or many at once. Fast, private, and easy to use.',
+    categoryId: 'generators',
+    keywords: ['uuid generator', 'generate uuid', 'uuid v4', 'random uuid online', 'guid generator'],
+    h1: 'UUID Generator',
+    intro: [
+      'Generate one or many version-4 UUIDs, entirely in your browser, using the Web Crypto API\'s cryptographically secure random number generator rather than Math.random(). Nothing about what you generate is ever sent anywhere — there\'d be nothing meaningful to send even if it were, since each UUID depends only on random bytes.',
+      'Set how many you need and click Generate, or click "Sample" to see a few right away.',
+    ],
+    details: [
+      {
+        heading: 'What is a UUID v4?',
+        paragraphs: [
+          'A UUID (Universally Unique Identifier) is a 128-bit value, usually written as 32 hex digits in five groups separated by hyphens (e.g. 3fa85f64-5717-4562-b3fc-2c963f66afa6). "v4" means it\'s generated from random bits rather than derived from a timestamp or hardware address — two fixed bits identify the version and variant, and the rest (122 bits) are random, which is what makes collisions astronomically unlikely without any central coordination between whoever generates them.',
+        ],
+      },
+      {
+        heading: 'Why crypto.randomUUID() instead of Math.random()',
+        paragraphs: [
+          'This tool uses the browser\'s built-in crypto.randomUUID(), which draws from a cryptographically secure random source. Math.random() is not designed for this — its output can be predictable enough in some engines to make hand-rolled "UUID-like" generators built on it a bad idea for anything where uniqueness or unpredictability actually matters, which is most of the reasons anyone needs a UUID at all.',
+        ],
+      },
+      {
+        heading: 'When to use a UUID',
+        paragraphs: [
+          'UUIDs are commonly used as database primary keys (especially across distributed systems, where auto-incrementing IDs from separate databases would collide), request/trace IDs for debugging distributed systems, session or API key identifiers, and any place you need an identifier that can be generated independently, in parallel, by many different machines, with no realistic chance of two of them colliding.',
+        ],
+      },
+      {
+        heading: 'Privacy: nothing to send anywhere',
+        paragraphs: [
+          "Generation happens entirely in your browser. There's no server round trip involved at any point — the values you generate exist only on your device until you copy or download them.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is a UUID?',
+        answer:
+          'A UUID (Universally Unique Identifier) is a 128-bit value, typically written as 32 hex digits in five hyphen-separated groups, designed so that independently generated values are extremely unlikely to collide.',
+      },
+      {
+        question: 'What does "v4" mean?',
+        answer:
+          'Version 4 means the UUID is generated from random bits rather than a timestamp, counter, or hardware address. It\'s the most common UUID version for general-purpose unique identifiers.',
+      },
+      {
+        question: 'How random are these UUIDs?',
+        answer:
+          "They're generated with crypto.randomUUID(), which uses your browser's cryptographically secure random number generator — not Math.random(), which isn't designed to be unpredictable enough for identifiers where collisions or guessability matter.",
+      },
+      {
+        question: 'Can two UUID v4 values ever collide?',
+        answer:
+          'In theory yes, in practice effectively never: with 122 random bits, you\'d need to generate roughly a billion UUIDs every second for about 85 years before the odds of a single collision reach 50%.',
+      },
+      {
+        question: 'Can I generate more than one UUID at a time?',
+        answer: 'Yes — set how many you need (up to 100 at once) and click Generate. Each one is generated independently.',
+      },
+      {
+        question: 'Is my data uploaded anywhere?',
+        answer: 'No. Generation happens entirely in your browser using the Web Crypto API. Nothing is sent over the network.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-03',
+    workbench: 'uuid',
   },
 ]
 

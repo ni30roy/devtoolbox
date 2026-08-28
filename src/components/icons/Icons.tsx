@@ -193,3 +193,12 @@ export function LinkIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function SparklesIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4v4M12 16v4M4 12h4M16 12h4" />
+      <path d="M7 7l2 2M15 15l2 2M17 7l-2 2M9 15l-2 2" />
+    </svg>
+  )
+}
