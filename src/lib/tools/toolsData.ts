@@ -334,6 +334,88 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-08-30',
     workbench: 'json-to-yaml',
   },
+  {
+    slug: 'base64-encoder-decoder',
+    name: 'Base64 Encoder & Decoder',
+    tagline: 'Encode text to Base64 or decode Base64 back to text, with full Unicode support.',
+    metaDescription:
+      'Encode and decode Base64 online for free. Convert text to Base64 or Base64 back to text instantly in your browser. Fast, private, and easy to use.',
+    categoryId: 'encoding',
+    keywords: ['base64 encoder', 'base64 decoder', 'base64 encode online', 'base64 decode online', 'text to base64', 'base64 to text'],
+    h1: 'Base64 Encoder & Decoder',
+    intro: [
+      'Encode text to Base64, or decode Base64 back to readable text — both directions run entirely in your browser. Unicode is handled correctly in both directions, so Hindi, emoji, Chinese, Japanese, and accented characters all round-trip exactly, unlike a bare browser btoa()/atob() call, which breaks on anything outside plain ASCII.',
+      'Click "Sample" to load a realistic example, or paste your own text or Base64 and switch between Encode and Decode at any time.',
+    ],
+    details: [
+      {
+        heading: 'What is Base64?',
+        paragraphs: [
+          "Base64 is a way of representing arbitrary binary data — or text — using only 64 printable ASCII characters (A–Z, a–z, 0–9, +, /, with = used for padding). Encoding converts your original text into that safe, transportable form; decoding reverses the process, turning Base64 back into the exact original text. Nothing about the underlying data changes — only how it's represented as characters.",
+        ],
+      },
+      {
+        heading: 'How to encode and decode',
+        paragraphs: [
+          'To encode: paste or type your text into the input box, then click "Encode." To decode: switch to "Decode," paste Base64 text into the input box, and click "Decode." In both cases the result appears immediately on the right, ready to copy or download — there\'s no separate submit step and nothing leaves your browser.',
+        ],
+      },
+      {
+        heading: 'Where Base64 is used — and what it is not',
+        paragraphs: [
+          "Base64 shows up anywhere binary or special-character data needs to safely travel through a system that only handles plain text: embedding small images directly in CSS or HTML as data URLs, attaching files to emails (MIME), sending binary data inside JSON or XML, encoding the header and payload of a JWT, and building HTTP Basic Authentication credentials.",
+          'Base64 is an encoding, not encryption — it does not protect data. Anyone can decode Base64 back to the original text instantly, with no key or password required, using this tool or any of dozens of others. Base64 is not encryption and should not be used to protect sensitive data; use real encryption (e.g. AES) if confidentiality actually matters.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          'Encoding and decoding both run locally using your browser\'s built-in JavaScript engine — nothing you type or paste is ever uploaded to a server, logged, or stored. That makes it a reasonable choice for encoding developer text you\'d rather keep off a third-party server, even though (as above) Base64 itself provides no confidentiality on its own.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is Base64?',
+        answer:
+          'Base64 is a text-safe way to represent binary data or text using 64 printable ASCII characters. It\'s used to safely embed or transmit data through systems designed for plain text.',
+      },
+      {
+        question: 'Is Base64 encryption?',
+        answer:
+          'No. Base64 is an encoding, not encryption — it provides no security or confidentiality. Anyone can decode it instantly with no key or password. Do not use Base64 to protect sensitive data; use real encryption if confidentiality matters.',
+      },
+      {
+        question: 'How do I encode text to Base64?',
+        answer: 'Paste or type your text into the input box, make sure "Encode" is selected, and click it. The Base64 result appears immediately on the right.',
+      },
+      {
+        question: 'How do I decode Base64?',
+        answer: 'Switch to "Decode," paste your Base64 text into the input box, and click "Decode." The original text appears on the right.',
+      },
+      {
+        question: 'Does this Base64 tool support Unicode?',
+        answer:
+          'Yes. Text is converted to and from UTF-8 bytes before Base64 encoding, so Hindi, emoji, Chinese, Japanese, accented characters, and any other Unicode text round-trip exactly — unlike a plain browser btoa()/atob() call, which throws an error on anything outside basic ASCII.',
+      },
+      {
+        question: 'Is my input uploaded to a server?',
+        answer: 'No. Encoding and decoding both run entirely in your browser. Nothing you type or paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I decode Base64 back to text?',
+        answer: 'Yes — switch to "Decode," paste the Base64, and click "Decode" to get the original text back exactly as it was encoded.',
+      },
+      {
+        question: 'What characters are valid in Base64?',
+        answer:
+          'Standard Base64 uses A–Z, a–z, 0–9, plus "+" and "/", with "=" used only for padding at the end. Any other character means the text isn\'t valid Base64 — this tool will tell you exactly which character is the problem.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-08-31',
+    workbench: 'base64',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

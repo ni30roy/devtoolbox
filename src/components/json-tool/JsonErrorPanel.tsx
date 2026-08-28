@@ -1,7 +1,13 @@
 import { AlertCircleIcon } from '@/components/icons/Icons'
 import type { JsonErrorInfo } from '@/lib/json/jsonEngine'
 
-export function JsonErrorPanel({ error }: { error: JsonErrorInfo }) {
+interface JsonErrorPanelProps {
+  error: JsonErrorInfo
+  /** Override the heading for non-JSON callers (e.g. "Invalid Base64"). */
+  heading?: string
+}
+
+export function JsonErrorPanel({ error, heading = 'Invalid JSON' }: JsonErrorPanelProps) {
   return (
     <div
       role="alert"
@@ -10,7 +16,7 @@ export function JsonErrorPanel({ error }: { error: JsonErrorInfo }) {
       <div className="flex items-start gap-2.5">
         <AlertCircleIcon className="mt-0.5 h-4 w-4 shrink-0" />
         <div className="min-w-0 flex-1">
-          <p className="font-medium">Invalid JSON</p>
+          <p className="font-medium">{heading}</p>
           <p className="mt-0.5 break-words">{error.message}</p>
           {error.line !== undefined && (
             <p className="mt-1 font-mono text-xs text-red-700 dark:text-red-400">

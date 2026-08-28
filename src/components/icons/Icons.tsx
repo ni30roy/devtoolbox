@@ -174,3 +174,12 @@ export function FlameIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function SwapIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M7 7h11m0 0-3-3m3 3-3 3" />
+      <path d="M17 17H6m0 0 3 3m-3-3 3-3" />
+    </svg>
+  )
+}
