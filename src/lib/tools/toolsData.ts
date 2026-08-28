@@ -26,6 +26,11 @@ export const categories: ToolCategory[] = [
     name: 'Converters',
     description: 'Convert data between common formats.',
   },
+  {
+    id: 'security',
+    name: 'Security',
+    description: 'Inspect tokens and hashes — locally, without sending anything to a server.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -505,6 +510,85 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-01',
     workbench: 'url',
+  },
+  {
+    slug: 'jwt-decoder',
+    name: 'JWT Decoder',
+    tagline: 'Decode a JWT\'s header and payload and read its claims — without sending it anywhere.',
+    metaDescription:
+      'Decode JWT tokens online for free. View the header, payload, claims, and signature of any JWT instantly in your browser. Decoding only — signatures are never verified.',
+    categoryId: 'security',
+    keywords: ['jwt decoder', 'decode jwt', 'jwt parser', 'jwt viewer', 'json web token decoder'],
+    h1: 'JWT Decoder',
+    intro: [
+      'Paste a JWT below to see its header and payload decoded as JSON, with registered timestamp claims (iat, exp, nbf) shown as readable dates. Everything runs in your browser — the token is never sent anywhere.',
+      "This tool decodes a JWT; it does not verify one. A JWT's header and payload are just base64url-encoded JSON — anyone can read them without a key, which is exactly what this tool does. Only checking the signature against the issuer's secret or public key can confirm a token is genuine, and that isn't something a generic online tool can safely or meaningfully do.",
+    ],
+    details: [
+      {
+        heading: 'What is a JWT?',
+        paragraphs: [
+          'A JSON Web Token (JWT) is a compact way to represent a set of claims — statements about a user or session — as a signed string. It has three dot-separated parts: a header (describing the signing algorithm and token type), a payload (the actual claims, such as a user ID or expiration time), and a signature (proof that the header and payload haven\'t been altered since they were signed, verifiable only with the correct key). JWTs are widely used for authentication and authorization in web APIs.',
+        ],
+      },
+      {
+        heading: 'Decoding vs. verifying — this matters',
+        paragraphs: [
+          'Decoding reads the header and payload — no key needed, since they\'re only base64url-encoded, not encrypted. Verifying checks the signature against the issuer\'s key to confirm the token is authentic and unmodified — this absolutely requires the correct secret or public key. This tool only decodes. A token decoding successfully means it is well-formed JSON in the right shape — it says nothing about whether the token is genuine, unexpired in a way your server should trust, or was actually issued by who it claims. Never treat a successfully decoded token as a validated one.',
+        ],
+      },
+      {
+        heading: 'Reading the claims',
+        paragraphs: [
+          'The payload can contain any claims the issuer chose to include, but a few are standardized: sub (subject/user ID), iat (issued-at time), exp (expiration time), and nbf (not-before time). exp, iat, and nbf are Unix timestamps in seconds, which this tool converts to a readable UTC date for you — again, purely by reading the number in the payload, not by checking whether the token is still acceptable to any particular server.',
+        ],
+      },
+      {
+        heading: 'Privacy: nothing is sent anywhere',
+        paragraphs: [
+          'Decoding runs entirely in your browser using base64url decoding and JSON.parse — the token you paste is never uploaded, logged, or transmitted. That matters, since JWTs often carry session or user information you wouldn\'t want leaving your machine even just for inspection.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is a JWT?',
+        answer:
+          'A JSON Web Token (JWT) is a compact, signed string used to represent claims — such as a user ID or expiration time — commonly used for authentication in web APIs. It has three parts: header, payload, and signature.',
+      },
+      {
+        question: 'Does decoding a JWT verify it?',
+        answer:
+          'No. Decoding only reads the header and payload, which requires no key at all. Verifying checks the signature against the issuer\'s secret or public key to confirm the token is genuine and unmodified — this tool does not do that, and a token decoding successfully does not mean it is valid, current, or trustworthy.',
+      },
+      {
+        question: 'Is my token uploaded to a server?',
+        answer: 'No. Decoding runs entirely in your browser. The token you paste is never sent over the network.',
+      },
+      {
+        question: 'Why does the signature look unreadable?',
+        answer:
+          "The signature isn't meant to be human-readable — it's a cryptographic value computed from the header and payload using the issuer's key. This tool shows it as-is, without attempting to verify it.",
+      },
+      {
+        question: 'What do exp, iat, and nbf mean?',
+        answer:
+          'They\'re standardized timestamp claims: iat is when the token was issued, exp is when it expires, and nbf is the earliest time it should be accepted. All three are Unix timestamps in seconds, which this tool converts to readable dates.',
+      },
+      {
+        question: 'Can this tool tell me if a token is expired?',
+        answer:
+          "It can show you what the exp claim says and note whether that date is in the past — but that's just reading the number in the payload, not a security check. A server should always verify the signature and re-check expiration itself rather than trusting a client-side read.",
+      },
+      {
+        question: 'Why can\'t this tool verify the signature for me?',
+        answer:
+          "Verifying a signature requires the issuer's secret (for HMAC algorithms) or public key (for RSA/ECDSA algorithms) — something only the issuing service should have, and something a generic browser tool has no safe way to obtain or handle. Pasting a signing secret into any third-party tool would itself be a security risk.",
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-02',
+    workbench: 'jwt',
   },
 ]
 
