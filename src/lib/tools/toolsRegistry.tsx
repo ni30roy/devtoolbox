@@ -16,6 +16,7 @@ const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> =
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),
   uuid: lazy(() => import('@/pages/tools/UuidToolPage')),
   hash: lazy(() => import('@/pages/tools/HashToolPage')),
+  'unix-timestamp': lazy(() => import('@/pages/tools/TimestampToolPage')),
 }
 
 export function getToolPageComponent(kind: WorkbenchKind) {

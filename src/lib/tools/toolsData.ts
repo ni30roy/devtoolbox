@@ -36,6 +36,11 @@ export const categories: ToolCategory[] = [
     name: 'Generators',
     description: 'Generate UUIDs, passwords, and other values you need on demand.',
   },
+  {
+    id: 'date-time',
+    name: 'Date & Time',
+    description: 'Convert and inspect dates, times, and timestamps.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -740,6 +745,72 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-04',
     workbench: 'hash',
+  },
+  {
+    slug: 'unix-timestamp-converter',
+    name: 'Unix Timestamp Converter',
+    tagline: 'Convert Unix timestamps to readable dates, and dates back to timestamps.',
+    metaDescription:
+      'Convert Unix timestamps to human-readable dates, or dates to Unix timestamps, online for free. Supports seconds and milliseconds. Fast, private, and easy to use.',
+    categoryId: 'date-time',
+    keywords: ['unix timestamp converter', 'epoch converter', 'timestamp to date', 'date to timestamp', 'unix time'],
+    h1: 'Unix Timestamp Converter',
+    intro: [
+      "Convert a Unix timestamp into a readable date, or pick a date and time to get its Unix timestamp back — in both seconds and milliseconds. Everything runs locally in your browser using JavaScript's own Date object.",
+      'Click "Now" to grab the current timestamp or current local time, or "Sample" to see a worked example first.',
+    ],
+    details: [
+      {
+        heading: 'What is a Unix timestamp?',
+        paragraphs: [
+          "A Unix timestamp (also called epoch time) counts the number of seconds — or in some systems, milliseconds — that have elapsed since January 1, 1970, 00:00:00 UTC. It's a compact, timezone-independent way to represent a specific instant in time, which is exactly why it's the standard way databases, APIs, and log files store timestamps internally.",
+        ],
+      },
+      {
+        heading: 'Seconds vs. milliseconds',
+        paragraphs: [
+          'Unix time is traditionally measured in seconds (that\'s the original definition, and what most backend systems and Unix tools use), but JavaScript\'s own Date.now() and many web APIs use milliseconds instead. Converting a millisecond timestamp as if it were seconds (or vice versa) gives a date wildly off — usually landing in 1970 or thousands of years in the future — so this tool asks explicitly which unit you mean rather than guessing.',
+        ],
+      },
+      {
+        heading: 'Timezones: the timestamp itself has none',
+        paragraphs: [
+          "A Unix timestamp always represents the same instant everywhere in the world — it has no timezone of its own. This tool shows the result in both UTC and your browser's local timezone (labeled explicitly) so there's no ambiguity about which one you're reading. When converting a date to a timestamp, the date and time you enter are interpreted in your browser's local timezone.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is a Unix timestamp?',
+        answer:
+          "It's the number of seconds (or milliseconds) elapsed since January 1, 1970, 00:00:00 UTC — a compact, timezone-independent way to represent a single point in time.",
+      },
+      {
+        question: 'How do I know if a timestamp is in seconds or milliseconds?',
+        answer:
+          "As a rough check: a current-day timestamp in seconds has 10 digits; in milliseconds it has 13. This tool lets you pick the unit explicitly so you don't have to guess — converting with the wrong unit selected will give an obviously wrong date (often 1970 or far in the future).",
+      },
+      {
+        question: 'Does this account for timezones?',
+        answer:
+          "Yes — a timestamp itself is timezone-independent, and this tool shows the resulting date in both UTC and your browser's local timezone, clearly labeled, so there's no ambiguity about which one you're looking at.",
+      },
+      {
+        question: 'Can I get the current timestamp?',
+        answer: 'Yes — click "Now" to fill in the current Unix timestamp (in whichever unit you\'ve selected) or the current local date and time.',
+      },
+      {
+        question: 'Is my data uploaded to a server?',
+        answer: 'No. All conversion happens locally in your browser using JavaScript\'s built-in Date object. Nothing is sent over the network.',
+      },
+      {
+        question: 'What happens if I enter an invalid timestamp?',
+        answer: "You'll see a clear error explaining the problem — an invalid or out-of-range timestamp is never silently converted into a misleading date.",
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-05',
+    workbench: 'unix-timestamp',
   },
 ]
 
