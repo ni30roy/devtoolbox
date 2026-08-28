@@ -256,6 +256,84 @@ export const tools: ToolMeta[] = [
     workbench: 'json',
     jsonMode: 'format',
   },
+  {
+    slug: 'json-to-yaml',
+    name: 'JSON to YAML Converter',
+    tagline: 'Convert JSON into clean, readable YAML.',
+    metaDescription:
+      'Convert JSON to YAML online for free. Transform JSON data into clean, readable YAML instantly in your browser. Fast, private, and easy to use.',
+    categoryId: 'json',
+    keywords: ['json to yaml', 'json to yaml converter', 'convert json to yaml', 'json yaml online', 'yaml from json'],
+    h1: 'JSON to YAML Converter',
+    intro: [
+      'Paste JSON below and convert it straight to YAML — objects, nested structures, arrays, strings, numbers, booleans, and null are all preserved correctly, using a proper YAML serializer rather than a naive line-by-line rewrite. Click "Sample" to see a realistic example first.',
+      'Conversion happens entirely in your browser: nothing you paste is ever uploaded, and there\'s no external conversion API involved anywhere in the process.',
+    ],
+    details: [
+      {
+        heading: 'What is JSON to YAML conversion?',
+        paragraphs: [
+          "JSON and YAML are both text formats for representing the same kind of data — objects, arrays, strings, numbers, booleans, and null — just with different syntax. Converting JSON to YAML takes a parsed JSON document and re-serializes it using YAML's indentation-based syntax instead of JSON's braces and brackets, without changing the underlying data in any way.",
+        ],
+      },
+      {
+        heading: 'How to convert JSON to YAML',
+        paragraphs: [
+          '1. Paste your JSON into the input box above, or click "Sample" to try it with example data. 2. Click "Convert to YAML." 3. Copy the result or download it as a .yaml file — the output on the right is ready to use as soon as conversion finishes.',
+        ],
+      },
+      {
+        heading: 'JSON vs. YAML — and when to use each',
+        paragraphs: [
+          "JSON is compact, has no ambiguity about whitespace, and is the native format for almost every web API and JavaScript codebase — it's the right choice when machines are reading and writing the data. YAML trades some of that compactness for readability: no quotes around most keys, no trailing commas to get wrong, and support for comments, which JSON doesn't have at all. That makes YAML the more common choice for files a human edits directly and rarely round-trips through code — Kubernetes manifests, CI/CD pipeline definitions (GitHub Actions, GitLab CI), Docker Compose files, and application config are all typically written in YAML even when the underlying tooling could just as easily accept JSON.",
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Parsing and conversion both run locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger documents. Your JSON is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is JSON to YAML conversion?',
+        answer:
+          "It's the process of taking a JSON document and re-writing it in YAML syntax — same data, same structure, different (more human-readable) formatting.",
+      },
+      {
+        question: 'How do I convert JSON to YAML?',
+        answer: 'Paste your JSON into the input box on this page and click "Convert to YAML." The result appears immediately on the right.',
+      },
+      {
+        question: 'Is my JSON uploaded to a server?',
+        answer:
+          "No. Conversion runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.",
+      },
+      {
+        question: 'What is the difference between JSON and YAML?',
+        answer:
+          "They represent the same kinds of data — objects, arrays, strings, numbers, booleans, null — but JSON uses braces, brackets, and quoted keys, while YAML uses indentation and mostly unquoted keys, and additionally supports comments. Any valid JSON document converts losslessly to an equivalent YAML document.",
+      },
+      {
+        question: 'Can I download the converted YAML?',
+        answer: 'Yes — use the Download button to save the result as a .yaml file, or Copy to put it directly on your clipboard.',
+      },
+      {
+        question: 'Does this converter support nested JSON?',
+        answer:
+          'Yes. Deeply nested objects and arrays are converted with correct, consistent indentation at every level — there is no nesting-depth limit beyond what your browser can hold in memory.',
+      },
+      {
+        question: 'Can I convert JSON arrays to YAML?',
+        answer:
+          'Yes, including arrays of objects and arrays nested inside other arrays or objects — each becomes a properly indented YAML sequence.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-08-30',
+    workbench: 'json-to-yaml',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {
