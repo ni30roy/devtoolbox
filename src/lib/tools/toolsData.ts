@@ -668,6 +668,79 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-03',
     workbench: 'uuid',
   },
+  {
+    slug: 'hash-generator',
+    name: 'Hash Generator',
+    tagline: 'Generate SHA-256, SHA-384, SHA-512, and SHA-1 hashes of any text.',
+    metaDescription:
+      'Generate SHA-256, SHA-384, SHA-512, and SHA-1 hashes online for free, using your browser\'s built-in Web Crypto API. Fast, private, and easy to use.',
+    categoryId: 'security',
+    keywords: ['hash generator', 'sha256 online', 'sha512 generator', 'text to hash', 'checksum generator'],
+    h1: 'Hash Generator',
+    intro: [
+      'Paste text below to generate its SHA-256, SHA-384, SHA-512, and SHA-1 hashes, computed locally using your browser\'s built-in Web Crypto API. Unicode text is handled correctly in every algorithm.',
+      'Hashing is one-way: there is no way to recover the original text from a hash, and this tool has no "decode" mode because none exists. A hash is a fingerprint of the input, not a way to hide or protect it.',
+    ],
+    details: [
+      {
+        heading: 'What is hashing?',
+        paragraphs: [
+          'A cryptographic hash function takes input of any length and produces a fixed-size output (a "digest") that changes completely if even one character of the input changes. The same input always produces the same hash, but there\'s no practical way to go from the hash back to the original input — that\'s what makes hashing one-way, and it\'s a fundamentally different operation from encryption, which is designed to be reversible with the right key.',
+        ],
+      },
+      {
+        heading: 'Which algorithm should I use?',
+        paragraphs: [
+          'SHA-256 is the most common general-purpose choice today — used in TLS certificates, Git commit hashes, and countless checksums. SHA-384 and SHA-512 produce longer digests for applications that want a larger security margin. SHA-1 is included here only because it\'s still occasionally required by legacy systems; it has known cryptographic weaknesses and should not be used anywhere security actually matters — this tool clearly labels it "legacy — insecure" for that reason.',
+        ],
+      },
+      {
+        heading: 'What hashing is not for',
+        paragraphs: [
+          "Hashing is not encryption, and a hash alone is not a safe way to store passwords — real password storage needs a slow, salted algorithm designed for that purpose (like bcrypt or Argon2), not a fast general-purpose hash like the ones here, which are trivial to brute-force at scale precisely because they're designed to be fast. This tool is aimed at everyday developer tasks: verifying a file's checksum, generating a quick fingerprint of some text, or checking that two pieces of text are identical without comparing them character by character.",
+        ],
+      },
+      {
+        heading: 'Privacy: nothing is sent anywhere',
+        paragraphs: [
+          "Hashing runs entirely in your browser using the Web Crypto API. The text you paste is never uploaded, logged, or transmitted — only the resulting hash exists, and only on your screen until you copy or download it.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is a hash?',
+        answer:
+          'A hash is a fixed-size fingerprint of some input data, produced by a one-way function: the same input always produces the same hash, but the hash cannot be reversed back into the original input.',
+      },
+      {
+        question: 'Is hashing the same as encryption?',
+        answer:
+          'No. Encryption is reversible with the right key; hashing is one-way and has no key at all. A hash proves data is unchanged or lets you compare values without revealing them — it does not hide or protect the original data the way encryption does.',
+      },
+      {
+        question: 'Which hash algorithm should I use?',
+        answer:
+          'SHA-256 is a solid general-purpose default. SHA-384 and SHA-512 offer a larger security margin for the same purposes. Avoid SHA-1 for anything security-related — it has known weaknesses and is included here only for legacy compatibility.',
+      },
+      {
+        question: 'Can I use this to hash passwords for storage?',
+        answer:
+          "No — general-purpose hashes like SHA-256 are too fast, which makes them practical to brute-force at scale. Password storage needs a dedicated slow, salted algorithm like bcrypt or Argon2, implemented server-side, not a generic hash function.",
+      },
+      {
+        question: 'Does this support Unicode text?',
+        answer: 'Yes. Text is converted to UTF-8 bytes before hashing, so any Unicode input hashes correctly and consistently.',
+      },
+      {
+        question: 'Is my text uploaded to a server?',
+        answer: 'No. Hashing runs entirely in your browser using the Web Crypto API. Nothing you type is ever sent over the network.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-04',
+    workbench: 'hash',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

@@ -202,3 +202,11 @@ export function SparklesIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function HashIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M5 9h14M5 15h14M10 4 8 20M16 4l-2 16" />
+    </svg>
+  )
+}
