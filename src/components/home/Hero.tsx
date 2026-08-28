@@ -10,10 +10,10 @@ export function Hero() {
         </span>
 
         <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl dark:text-white">
-          Developer tools that just work
+          CodeTool — free online developer tools
         </h1>
         <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">
-          Free, fast utilities for everyday development tasks — format JSON, validate data, and more.
+          Fast, browser-based utilities for everyday development tasks — format JSON, validate data, and more.
           No sign-up, no ads, no server round trip.
         </p>
 

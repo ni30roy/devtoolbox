@@ -13,8 +13,8 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { loadEnv } from 'vite'
-import { tools } from '../src/lib/tools/toolsData'
-import { SITE_DESCRIPTION, SITE_NAME, normalizeSiteUrl } from '../src/lib/site'
+import { getCategoryById, tools } from '../src/lib/tools/toolsData'
+import { SITE_DESCRIPTION, SITE_NAME, getSiteFaqs, normalizeSiteUrl } from '../src/lib/site'
 
 const distDir = path.resolve(process.cwd(), 'dist')
 
@@ -68,13 +68,49 @@ function withStructuredData(html: string, json: unknown): string {
   return html.replace('<!--seo:structured-data-->', script)
 }
 
-function websiteStructuredData() {
+function faqPageData(faqs: { question: string; answer: string }[]) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: SITE_NAME,
-    url: `${SITE_URL}/`,
-    description: SITE_DESCRIPTION,
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  }
+}
+
+function websiteStructuredData() {
+  const graph: unknown[] = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: `${SITE_URL}/`,
+      description: SITE_DESCRIPTION,
+      publisher: {
+        '@type': 'Organization',
+        name: SITE_NAME,
+        url: `${SITE_URL}/`,
+        logo: `${SITE_URL}/favicon.svg`,
+      },
+    },
+  ]
+  const siteFaqs = getSiteFaqs(tools.map((tool) => tool.name))
+  if (siteFaqs.length > 0) graph.push(faqPageData(siteFaqs))
+  return graph
+}
+
+function breadcrumbStructuredData(tool: (typeof tools)[number]) {
+  const category = getCategoryById(tool.categoryId)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 2, name: category?.name ?? 'Tools', item: `${SITE_URL}/` },
+      { '@type': 'ListItem', position: 3, name: tool.name },
+    ],
   }
 }
 
@@ -91,18 +127,9 @@ function toolStructuredData(tool: (typeof tools)[number]) {
       description: tool.metaDescription,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
+    breadcrumbStructuredData(tool),
   ]
-  if (tool.faqs.length > 0) {
-    graph.push({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: tool.faqs.map((faq) => ({
-        '@type': 'Question',
-        name: faq.question,
-        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-      })),
-    })
-  }
+  if (tool.faqs.length > 0) graph.push(faqPageData(tool.faqs))
   return graph
 }
 
@@ -156,10 +183,27 @@ async function main() {
     await writeFile(path.join(outDir, 'index.html'), html, 'utf8')
   }
 
+  // Static 404 page for Cloudflare's `assets.not_found_handling: "404-page"`
+  // (see wrangler.jsonc): served with a genuine HTTP 404 for any unmatched
+  // path, so a bad/typo URL doesn't return 200 with the homepage's indexable
+  // content — a "soft 404" that would otherwise confuse crawlers. It shares
+  // the same JS bundle, so React Router still renders the app's own
+  // NotFoundPage UI once it hydrates; this only fixes what a crawler sees
+  // before any JS runs.
+  let notFoundHtml = setTag(template, /<title>[^<]*<\/title>/, `<title>Page not found | ${SITE_NAME}</title>`)
+  notFoundHtml = setMeta(notFoundHtml, 'name', 'robots', 'noindex, follow')
+  notFoundHtml = setMeta(
+    notFoundHtml,
+    'name',
+    'description',
+    `The page you're looking for doesn't exist. Browse all free developer tools on ${SITE_NAME}.`,
+  )
+  await writeFile(path.join(distDir, '404.html'), notFoundHtml, 'utf8')
+
   await writeFile(path.join(distDir, 'robots.txt'), buildRobots(), 'utf8')
   await writeFile(path.join(distDir, 'sitemap.xml'), buildSitemap(), 'utf8')
 
-  console.log(`build-seo: wrote ${tools.length} tool page(s), sitemap.xml, and robots.txt`)
+  console.log(`build-seo: wrote ${tools.length} tool page(s), 404.html, sitemap.xml, and robots.txt`)
 }
 
 main().catch((error) => {

@@ -2,8 +2,9 @@ import type { ReactNode } from 'react'
 import { Seo } from '@/components/seo/Seo'
 import { Container } from '@/components/layout/Container'
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs'
+import { ToolGrid } from '@/components/home/ToolGrid'
 import { FaqSection } from './FaqSection'
-import { getCategoryById } from '@/lib/tools/toolsData'
+import { getCategoryById, tools } from '@/lib/tools/toolsData'
 import { SITE_NAME } from '@/lib/site'
 import type { ToolMeta } from '@/lib/tools/types'
 
@@ -21,6 +22,7 @@ interface ToolPageLayoutProps {
 export function ToolPageLayout({ tool, children }: ToolPageLayoutProps) {
   const category = getCategoryById(tool.categoryId)
   const title = `${tool.name} – Free Online Tool | ${SITE_NAME}`
+  const relatedTools = tools.filter((other) => other.categoryId === tool.categoryId && other.slug !== tool.slug)
 
   return (
     <>
@@ -62,6 +64,15 @@ export function ToolPageLayout({ tool, children }: ToolPageLayoutProps) {
         {tool.faqs.length > 0 && (
           <div className="mt-16 max-w-3xl">
             <FaqSection faqs={tool.faqs} />
+          </div>
+        )}
+
+        {relatedTools.length > 0 && (
+          <div className="mt-16 max-w-3xl">
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">Related tools</h2>
+            <div className="mt-4">
+              <ToolGrid tools={relatedTools} />
+            </div>
           </div>
         )}
       </Container>

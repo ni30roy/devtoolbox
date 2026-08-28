@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
 import { Seo } from '@/components/seo/Seo'
 import { Container } from '@/components/layout/Container'
+import { SITE_NAME } from '@/lib/site'
 
 export default function NotFoundPage() {
   return (
     <>
-      <Seo title="Page not found | DevToolBox" description="This page doesn't exist." path="/404" noindex />
+      <Seo title={`Page not found | ${SITE_NAME}`} description="This page doesn't exist." path="/404" noindex />
       <Container className="flex flex-col items-center py-24 text-center">
         <p className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">404</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
