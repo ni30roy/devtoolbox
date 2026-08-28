@@ -8,6 +8,7 @@ import {
   CheckCircleIcon,
   CopyIcon,
   DownloadIcon,
+  FileJsonIcon,
   TrashIcon,
   UploadIcon,
 } from '@/components/icons/Icons'
@@ -19,6 +20,9 @@ const ACTION_LABEL: Record<JsonAction, string> = {
 }
 
 const LARGE_INPUT_BYTES = 2 * 1024 * 1024 // 2 MB — above this we show a "this may take a moment" hint
+
+const SAMPLE_JSON =
+  '{"name":"CodeTool","type":"developer-tools","tools":["json-formatter","json-validator","json-minifier","json-beautifier"],"active":true,"stats":{"toolCount":4,"free":true},"tags":["json","developer","free"]}'
 
 interface JsonWorkbenchProps {
   /** Which action this tool page leads with; all three are always available. */
@@ -77,6 +81,13 @@ export function JsonWorkbench({ mode }: JsonWorkbenchProps) {
     setInput('')
     setResult(null)
     setFileName(null)
+    setCopied(false)
+  }, [])
+
+  const handleSample = useCallback(() => {
+    setInput(SAMPLE_JSON)
+    setFileName(null)
+    setResult(null)
     setCopied(false)
   }, [])
 
@@ -190,6 +201,13 @@ export function JsonWorkbench({ mode }: JsonWorkbenchProps) {
               />
               <button
                 type="button"
+                onClick={handleSample}
+                className="focus-ring inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
+              >
+                <FileJsonIcon className="h-3.5 w-3.5" /> Sample
+              </button>
+              <button
+                type="button"
                 onClick={() => fileInputRef.current?.click()}
                 className="focus-ring inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium text-slate-500 hover:bg-slate-100 hover:text-slate-800 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
               >
@@ -213,6 +231,7 @@ export function JsonWorkbench({ mode }: JsonWorkbenchProps) {
               setFileName(null)
             }}
             spellCheck={false}
+            aria-label="JSON input"
             placeholder={'Paste JSON here, drop a .json file, or click Upload…\n\n{\n  "hello": "world"\n}'}
             className="focus-ring h-80 w-full flex-1 resize-none border-0 bg-transparent px-4 py-2 font-mono text-sm text-slate-800 placeholder:text-slate-400 focus-visible:ring-inset lg:h-[28rem] dark:text-slate-100 dark:placeholder:text-slate-600"
           />
@@ -252,7 +271,7 @@ export function JsonWorkbench({ mode }: JsonWorkbenchProps) {
             </div>
           </div>
 
-          <div className="h-80 flex-1 overflow-auto px-4 py-2 lg:h-[28rem]">
+          <div className="h-80 flex-1 overflow-auto px-4 py-2 lg:h-[28rem]" role="region" aria-label="Result">
             {!result && (
               <p className="pt-8 text-center text-sm text-slate-400 dark:text-slate-600">
                 Run {ACTION_LABEL[mode].toLowerCase()} to see the result here.

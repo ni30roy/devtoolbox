@@ -191,6 +191,71 @@ export const tools: ToolMeta[] = [
     workbench: 'json',
     jsonMode: 'minify',
   },
+  {
+    slug: 'json-beautifier',
+    name: 'JSON Beautifier',
+    tagline: 'Pretty-print messy or minified JSON with clean, configurable indentation.',
+    metaDescription:
+      'Beautify and format JSON online for free. Format messy JSON with proper indentation instantly in your browser. Fast, private, and easy to use.',
+    categoryId: 'json',
+    keywords: ['json beautifier', 'beautify json', 'json beautify online', 'pretty print json', 'format json online'],
+    h1: 'JSON Beautifier',
+    intro: [
+      'Paste minified, compressed, or just messy JSON below and this beautifier reindents it into clean, readable text in an instant — no installs, no uploads, and no waiting on a server round trip. Click "Sample" above the input if you want to see it in action first.',
+      "It works the same whether your JSON came from an API response, a log file, a browser DevTools network tab, or a teammate's chat message — anything valid gets reformatted with consistent spacing so you can actually read it.",
+    ],
+    details: [
+      {
+        heading: 'JSON beautifier vs. JSON formatter',
+        paragraphs: [
+          '"Beautify" and "format" describe the exact same operation on JSON: adding indentation and line breaks back into a document so its structure is easy to read. There is no technical difference between a "JSON beautifier" and a "JSON formatter" — they\'re just two common names people search for the same thing, and this page produces identical output to the JSON Formatter on this site. Use whichever page you found first; the indentation options and results are the same.',
+        ],
+      },
+      {
+        heading: 'How to beautify JSON in three steps',
+        paragraphs: [
+          '1. Paste your JSON into the input box above, drop a .json file onto it, or click "Sample" to try the tool with example data. 2. Pick an indent width — 2 spaces, 4 spaces, or tabs — from the selector in the toolbar. 3. Click "Format" and your beautified JSON appears on the right, ready to copy or download.',
+        ],
+      },
+      {
+        heading: 'Why properly formatted JSON is useful',
+        paragraphs: [
+          "Minified JSON is optimized for machines, not people — a single unbroken line of text hides exactly how deeply nested a value is, which array an object belongs to, and where a document actually ends. Beautifying it restores the visual structure, which makes debugging an API response, reviewing a config file, or explaining a payload to a teammate dramatically faster than scrolling through a wall of text.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is a JSON beautifier?',
+        answer:
+          'A JSON beautifier is a tool that takes JSON text — however it\'s currently formatted, including fully minified — and rewrites it with consistent indentation and line breaks so it\'s easy for a person to read.',
+      },
+      {
+        question: 'How do I beautify JSON online?',
+        answer:
+          'Paste your JSON into the input box on this page, choose an indent width, and click "Format." The beautified result appears immediately on the right — entirely in your browser, with no page reload.',
+      },
+      {
+        question: 'Is my JSON uploaded to a server?',
+        answer:
+          "No. Beautifying runs entirely in your browser using JavaScript's built-in JSON engine, in a background thread. Nothing you paste or upload is ever sent over the network.",
+      },
+      {
+        question: 'What is the difference between JSON beautify and JSON minify?',
+        answer:
+          "They're opposites: beautifying adds whitespace and indentation to make JSON readable, while minifying strips all of it out to make the file as small as possible. Both produce the exact same data — only the whitespace differs — and you can switch between them on this page using the Format and Minify buttons.",
+      },
+      {
+        question: 'Can I download formatted JSON?',
+        answer:
+          'Yes — after beautifying, use the Download button to save the result as a .json file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-08-29',
+    workbench: 'json',
+    jsonMode: 'format',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {
