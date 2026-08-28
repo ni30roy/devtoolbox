@@ -11,6 +11,7 @@ import type { ToolMeta, WorkbenchKind } from './types'
 const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> = {
   json: lazy(() => import('@/pages/tools/JsonToolPage')),
   'json-to-yaml': lazy(() => import('@/pages/tools/JsonToYamlToolPage')),
+  'json-to-csv': lazy(() => import('@/pages/tools/JsonToCsvToolPage')),
   base64: lazy(() => import('@/pages/tools/Base64ToolPage')),
   url: lazy(() => import('@/pages/tools/UrlToolPage')),
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),

@@ -812,6 +812,89 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-05',
     workbench: 'unix-timestamp',
   },
+  {
+    slug: 'json-to-csv-converter',
+    name: 'JSON to CSV Converter',
+    tagline: 'Convert a JSON array of objects into a downloadable CSV file.',
+    metaDescription:
+      'Convert JSON to CSV online for free. Turn a JSON array of objects into a clean, spreadsheet-ready CSV file instantly in your browser.',
+    categoryId: 'json',
+    keywords: ['json to csv', 'json to csv converter', 'convert json to csv', 'json csv online', 'csv from json'],
+    h1: 'JSON to CSV Converter',
+    intro: [
+      'Paste a JSON array of objects below and convert it to CSV — nested objects are flattened into dot-notation columns (like address.city), and every object\'s keys are merged into one consistent header row, with blank cells for anything missing. Click "Sample" to see a realistic example first.',
+      'Conversion happens entirely in your browser: nothing you paste is ever uploaded, and there\'s no external conversion API involved anywhere in the process.',
+    ],
+    details: [
+      {
+        heading: 'What is JSON to CSV conversion?',
+        paragraphs: [
+          'CSV (comma-separated values) is a flat, row-and-column format that every spreadsheet application and most data pipelines can read. JSON, by contrast, can nest objects and arrays arbitrarily deep. Converting JSON to CSV means taking each item in a JSON array and turning it into one CSV row, with each of its properties becoming a column — which requires flattening any nesting along the way, since CSV itself has no concept of a nested value.',
+        ],
+      },
+      {
+        heading: 'How to convert JSON to CSV',
+        paragraphs: [
+          '1. Paste a JSON array of objects into the input box above, or click "Sample" to try it with example data. 2. Click "Convert to CSV." 3. Copy the result or download it as a .csv file — ready to open directly in Excel, Google Sheets, or Numbers.',
+        ],
+      },
+      {
+        heading: 'How nested objects and arrays are handled',
+        paragraphs: [
+          'Nested objects are flattened into dot-notation column names — a field like `{"address":{"city":"NY"}}` becomes a column named `address.city`. Arrays (including arrays of objects) can\'t be flattened the same way without the column count depending on how long each row\'s array happens to be, so they\'re preserved as JSON text inside a single cell instead. If your JSON objects don\'t all share the exact same keys, the header row is the union of every key seen across all objects, and any object missing a given key just gets an empty cell there.',
+        ],
+      },
+      {
+        heading: 'What input does this expect?',
+        paragraphs: [
+          'The common case is a JSON array of objects — each object becomes one row. A single JSON object (not wrapped in an array) is treated as one row. An array of plain values (numbers, strings) produces a single "value" column. An empty array has no rows to derive columns from, so it\'s reported as an error rather than silently producing a blank file.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Parsing and conversion both run locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger documents. Your JSON is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is JSON to CSV conversion?',
+        answer:
+          "It's the process of turning a JSON array of objects into a flat, spreadsheet-ready table — one row per object, one column per property, with nested objects flattened into dot-notation column names.",
+      },
+      {
+        question: 'How do I convert JSON to CSV?',
+        answer: 'Paste your JSON array into the input box on this page and click "Convert to CSV." The result appears immediately on the right, ready to copy or download.',
+      },
+      {
+        question: 'Is my JSON uploaded to a server?',
+        answer: 'No. Conversion runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'How are nested objects converted?',
+        answer:
+          'Nested objects are flattened into dot-notation columns — for example, `{"address":{"city":"NY"}}` becomes a column named `address.city` with the value `NY`.',
+      },
+      {
+        question: 'What happens to arrays inside my JSON objects?',
+        answer:
+          "Arrays are kept as JSON text inside a single cell rather than split into separate columns, since the number of columns that would require would depend on each row's array length.",
+      },
+      {
+        question: "What if my objects don't all have the same keys?",
+        answer:
+          'The CSV header includes every key seen across all objects. Any object missing a given key just gets an empty cell in that column — no rows are dropped.',
+      },
+      {
+        question: 'Can I download the converted CSV?',
+        answer: 'Yes — use the Download button to save the result as a .csv file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-06',
+    workbench: 'json-to-csv',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

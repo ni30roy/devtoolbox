@@ -22,7 +22,16 @@ export interface ToolCategory {
 
 /** Which workbench UI a tool page renders. One workbench can power several
  * routes (e.g. the JSON workbench powers formatter/validator/minifier/beautifier). */
-export type WorkbenchKind = 'json' | 'json-to-yaml' | 'base64' | 'url' | 'jwt' | 'uuid' | 'hash' | 'unix-timestamp'
+export type WorkbenchKind =
+  | 'json'
+  | 'json-to-yaml'
+  | 'json-to-csv'
+  | 'base64'
+  | 'url'
+  | 'jwt'
+  | 'uuid'
+  | 'hash'
+  | 'unix-timestamp'
 
 export type JsonToolMode = 'format' | 'validate' | 'minify'
 

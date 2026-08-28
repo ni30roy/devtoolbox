@@ -210,3 +210,12 @@ export function HashIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function TableIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3.5" y="4.5" width="17" height="15" rx="1.5" />
+      <path d="M3.5 9.5h17M3.5 14.5h17M9.5 4.5v15M14.5 4.5v15" />
+    </svg>
+  )
+}
