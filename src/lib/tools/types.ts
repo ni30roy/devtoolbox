@@ -13,6 +13,7 @@ export type ToolCategoryId =
   | 'security'
   | 'generators'
   | 'date-time'
+  | 'data'
 
 export interface ToolCategory {
   id: ToolCategoryId
@@ -26,6 +27,7 @@ export type WorkbenchKind =
   | 'json'
   | 'json-to-yaml'
   | 'json-to-csv'
+  | 'csv-to-json'
   | 'base64'
   | 'url'
   | 'jwt'

@@ -20,7 +20,7 @@ export function About() {
           the page has loaded. There's no account to create and no usage limit to hit.
         </p>
         <p>
-          Today {SITE_NAME} covers {tools.length} JSON tools —{' '}
+          Today {SITE_NAME} covers {tools.length} developer tools —{' '}
           {tools.map((tool, index) => (
             <span key={tool.slug}>
               {index > 0 && (index === tools.length - 1 ? ', and ' : ', ')}

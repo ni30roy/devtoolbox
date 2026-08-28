@@ -6,6 +6,7 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   json: FileJsonIcon,
   'json-to-yaml': BracesIcon,
   'json-to-csv': TableIcon,
+  'csv-to-json': FileJsonIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,

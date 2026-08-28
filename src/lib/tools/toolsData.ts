@@ -41,6 +41,11 @@ export const categories: ToolCategory[] = [
     name: 'Date & Time',
     description: 'Convert and inspect dates, times, and timestamps.',
   },
+  {
+    id: 'data',
+    name: 'Data',
+    description: 'Parse and transform structured data files like CSV.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -894,6 +899,89 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-06',
     workbench: 'json-to-csv',
+  },
+  {
+    slug: 'csv-to-json-converter',
+    name: 'CSV to JSON Converter',
+    tagline: 'Convert a CSV file into a clean JSON array of objects.',
+    metaDescription:
+      'Convert CSV to JSON online for free. Turn a CSV file into a clean JSON array of objects instantly in your browser — quoted fields and commas handled correctly.',
+    categoryId: 'data',
+    keywords: ['csv to json', 'csv to json converter', 'convert csv to json', 'csv json online', 'json from csv'],
+    h1: 'CSV to JSON Converter',
+    intro: [
+      'Paste CSV below and convert it to a JSON array of objects — the first row is used as the property names, and every following row becomes one object. A proper CSV parser handles quoted fields correctly, so commas, line breaks, and escaped quotes inside a field don\'t break the result the way a naive comma-split would. Click "Sample" to see a realistic example first.',
+      'Conversion happens entirely in your browser: nothing you paste is ever uploaded, and there\'s no external conversion API involved anywhere in the process.',
+    ],
+    details: [
+      {
+        heading: 'What is CSV to JSON conversion?',
+        paragraphs: [
+          'CSV (comma-separated values) stores data as flat rows and columns, with the first row typically naming each column. Converting CSV to JSON reads that header row as the property names and turns every subsequent row into one JSON object with those names as keys — the result is a JSON array where each element corresponds to one row of the original file.',
+        ],
+      },
+      {
+        heading: 'How to convert CSV to JSON',
+        paragraphs: [
+          '1. Paste your CSV into the input box above, or click "Sample" to try it with example data. 2. Click "Convert to JSON." 3. Copy the result or download it as a .json file.',
+        ],
+      },
+      {
+        heading: 'How quoted fields, commas, and line breaks are handled',
+        paragraphs: [
+          'This parser follows the same quoting rules as Excel and most CSV exporters: a field wrapped in double quotes can safely contain commas or line breaks, and a literal double quote inside a quoted field is written as two double quotes in a row (`""`). Splitting on commas without understanding quoting is a common source of corrupted CSV-to-JSON conversions — this tool avoids that by scanning the CSV character by character instead.',
+        ],
+      },
+      {
+        heading: 'What input does this expect?',
+        paragraphs: [
+          'The first row is always treated as the header (the property names for every object). Every value comes through as a string — types are never guessed, so a ZIP code like `02138` or an order ID like `007` keeps its leading zero instead of silently becoming a number. Rows with fewer columns than the header get empty strings for the missing ones; extra columns beyond the header are ignored. Blank lines are skipped.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Parsing and conversion both run locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger files. Your CSV is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is CSV to JSON conversion?',
+        answer:
+          "It's the process of turning a flat CSV table into a JSON array of objects — the header row becomes each object's property names, and every other row becomes one object.",
+      },
+      {
+        question: 'How do I convert CSV to JSON?',
+        answer: 'Paste your CSV into the input box on this page and click "Convert to JSON." The result appears immediately on the right.',
+      },
+      {
+        question: 'Is my CSV uploaded to a server?',
+        answer: 'No. Conversion runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Does this handle commas or line breaks inside a field?',
+        answer:
+          'Yes — as long as that field is wrapped in double quotes (standard CSV quoting), commas and line breaks inside it are preserved correctly rather than splitting the row incorrectly.',
+      },
+      {
+        question: 'Are numbers and booleans converted to their JSON types?',
+        answer:
+          "No — every value is kept as a string. This avoids incorrectly reinterpreting data like a ZIP code or ID number that happens to look numeric but shouldn't lose a leading zero.",
+      },
+      {
+        question: 'What happens if rows have a different number of columns than the header?',
+        answer:
+          'A short row gets empty strings for its missing columns; a row with extra columns beyond the header has those extra values ignored. No rows are dropped.',
+      },
+      {
+        question: 'Can I download the converted JSON?',
+        answer: 'Yes — use the Download button to save the result as a .json file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-07',
+    workbench: 'csv-to-json',
   },
 ]
 
