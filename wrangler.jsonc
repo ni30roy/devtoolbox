@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "devtoolbox",
+  "compatibility_date": "2026-08-28",
+
+  // Pure static-asset deployment — no Worker script. Vite's build output
+  // (dist/) already contains a real, pre-rendered index.html per route
+  // (see scripts/build-seo.ts), so those are served directly with their
+  // own SEO metadata and never need a rewrite rule.
+  //
+  // "single-page-application" is Cloudflare's native SPA fallback: any
+  // request that doesn't match a physical file in dist/ (e.g. a future
+  // client-only route) serves the root index.html so React Router can
+  // handle it, without a hand-written `_redirects` rule that can loop
+  // against Cloudflare's own asset-serving rewrites (the cause of the
+  // "Infinite loop detected" deploy error — see README.md).
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
