@@ -43,6 +43,7 @@ export type WorkbenchKind =
   | 'url-parser'
   | 'password'
   | 'lorem-ipsum'
+  | 'random-number'
   | 'base64'
   | 'url'
   | 'jwt'

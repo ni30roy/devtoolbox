@@ -24,6 +24,7 @@ const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> =
   'url-parser': lazy(() => import('@/pages/tools/UrlParserToolPage')),
   password: lazy(() => import('@/pages/tools/PasswordToolPage')),
   'lorem-ipsum': lazy(() => import('@/pages/tools/LoremIpsumToolPage')),
+  'random-number': lazy(() => import('@/pages/tools/RandomNumberToolPage')),
   base64: lazy(() => import('@/pages/tools/Base64ToolPage')),
   url: lazy(() => import('@/pages/tools/UrlToolPage')),
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),

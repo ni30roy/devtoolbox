@@ -1803,6 +1803,64 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-19',
     workbench: 'lorem-ipsum',
   },
+  {
+    slug: 'random-number-generator',
+    name: 'Random Number Generator',
+    tagline: 'Generate random integers in a range, with optional no-duplicates mode.',
+    metaDescription:
+      'Free online random number generator. Generate one or more random integers within a range, with an option to avoid duplicates, using unbiased cryptographic randomness.',
+    categoryId: 'generators',
+    keywords: ['random number generator', 'random integer generator', 'number picker', 'raffle number generator'],
+    h1: 'Random Number Generator',
+    intro: [
+      "Generate one or more random integers within a range you choose — useful for dice rolls, raffle drawings, sampling, or picking a winner. Turn on \"No duplicates\" to draw unique numbers instead, the way a raffle or lottery would.",
+      'Every number comes from crypto.getRandomValues() with rejection sampling to eliminate bias — the same unbiased approach this site\'s Password Generator uses — rather than the more common Math.random(), so the result is genuinely fair even for ranges that aren\'t a round power of two.',
+    ],
+    details: [
+      {
+        heading: 'Why fairness matters here too',
+        paragraphs: [
+          "Picking a random number with `Math.floor(Math.random() * range)` is fine for most casual purposes, but it can introduce a very slight bias for ranges that don't evenly divide the underlying random source. For a raffle, giveaway, or anything where perceived fairness matters, this tool draws from crypto.getRandomValues() with rejection sampling instead, so every number in the range is exactly equally likely regardless of the range's size.",
+        ],
+      },
+      {
+        heading: 'How "No duplicates" works',
+        paragraphs: [
+          "With duplicates allowed (the default), each number is drawn independently, so the same value can appear more than once — like rolling several dice. With \"No duplicates\" turned on, each draw is guaranteed distinct from the others, like drawing raffle tickets from a hat. If you ask for more unique numbers than the range can provide, you'll get a clear error instead of an incomplete result.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Can I generate more than one number at a time?',
+        answer: 'Yes — set "How many" to generate a batch of numbers in one click, up to 100 at a time.',
+      },
+      {
+        question: 'What does "No duplicates" do?',
+        answer: 'It guarantees every generated number is distinct, like drawing raffle tickets — useful when you need unique picks rather than independent rolls.',
+      },
+      {
+        question: 'What happens if I ask for more unique numbers than the range allows?',
+        answer: "You'll see a clear error explaining the range can't supply that many unique values, rather than a silently incomplete result.",
+      },
+      {
+        question: 'Is this actually more random than Math.random()?',
+        answer:
+          "It's more precisely unbiased: it uses crypto.getRandomValues() with rejection sampling, which avoids a subtle bias Math.random()-based approaches can have for ranges that aren't a power of two.",
+      },
+      {
+        question: 'Can I use negative numbers or a negative-to-positive range?',
+        answer: 'Yes — min and max can be any integers, including negative values, as long as min is less than or equal to max.',
+      },
+      {
+        question: 'Is anything sent to a server?',
+        answer: 'No. Generation happens entirely in your browser. Nothing is sent to a server, logged, or stored.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-20',
+    workbench: 'random-number',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

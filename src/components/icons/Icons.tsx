@@ -238,6 +238,19 @@ export function RegexIcon(props: IconProps) {
   )
 }
 
+export function DiceIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="4" y="4" width="16" height="16" rx="2.5" />
+      <circle cx="9" cy="9" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="9" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="12" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none" />
+      <circle cx="15" cy="15" r="1.1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
 export function LockIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
