@@ -30,6 +30,7 @@ export type WorkbenchKind =
   | 'json-to-csv'
   | 'csv-to-json'
   | 'html-formatter'
+  | 'css'
   | 'base64'
   | 'url'
   | 'jwt'
@@ -38,6 +39,7 @@ export type WorkbenchKind =
   | 'unix-timestamp'
 
 export type JsonToolMode = 'format' | 'validate' | 'minify'
+export type CssToolMode = 'format' | 'minify'
 
 export interface ToolFaq {
   question: string
@@ -64,4 +66,5 @@ export interface ToolMeta {
   addedAt: string
   workbench: WorkbenchKind
   jsonMode?: JsonToolMode
+  cssMode?: CssToolMode
 }

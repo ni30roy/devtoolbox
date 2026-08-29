@@ -1060,6 +1060,145 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-08',
     workbench: 'html-formatter',
   },
+  {
+    slug: 'css-formatter',
+    name: 'CSS Formatter',
+    tagline: 'Beautify messy or minified CSS with consistent indentation.',
+    metaDescription:
+      'Free online CSS formatter and beautifier. Paste minified or messy CSS and get clean, indented stylesheets instantly. Runs entirely in your browser.',
+    categoryId: 'web',
+    keywords: ['css formatter', 'css beautifier', 'format css', 'pretty print css', 'indent css'],
+    h1: 'CSS Formatter & Beautifier',
+    intro: [
+      'Paste in any CSS — rules, nested `@media` or `@supports` blocks, `@keyframes`, custom properties — and this tool reformats it with consistent indentation. It uses a real structural parser rather than a find-and-replace, so strings, `url(...)` values, and `calc()` expressions are never corrupted.',
+      'Everything runs locally in your browser using a background thread — your CSS is never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'What this formatter handles correctly',
+        paragraphs: [
+          'Selectors, declarations, comments, nested at-rules like `@media` and `@supports`, `@keyframes` blocks, and CSS custom properties are all parsed structurally and re-indented based on nesting depth. Strings can safely contain characters that would confuse a naive text-based formatter — semicolons, colons, or braces inside `content: "..."` are preserved exactly as written rather than being misread as CSS syntax.',
+        ],
+      },
+      {
+        heading: 'How to format CSS',
+        paragraphs: [
+          '1. Paste your CSS into the input box above, or click "Sample" to try it with example styles. 2. Choose an indent size. 3. Click "Format." 4. Copy the result or download it as a .css file.',
+        ],
+      },
+      {
+        heading: 'Looking to shrink a stylesheet instead?',
+        paragraphs: [
+          'Use the CSS Minifier to strip comments and unnecessary whitespace for production — it shares the same input box, so you can switch between the two without losing what you pasted.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Formatting runs locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger stylesheets. Your CSS is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does a CSS formatter do?',
+        answer: 'It re-indents your stylesheet based on rule nesting, so selectors, declarations, and nested at-rules are easy to scan.',
+      },
+      {
+        question: 'Does this handle nested rules like @media or @keyframes?',
+        answer: 'Yes — any level of nesting is supported, since the tool parses structure rather than guessing from indentation or line breaks.',
+      },
+      {
+        question: 'Will formatting break a value like calc() or a quoted string?',
+        answer:
+          "No. Quoted strings and function calls like calc(), url(), and var() are recognized as single units, so characters inside them are never misread as CSS syntax and spacing inside calc() is preserved exactly.",
+      },
+      {
+        question: 'Is my CSS uploaded to a server?',
+        answer: 'No. Formatting runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I choose the indent size?',
+        answer: 'Yes — pick 2 spaces, 4 spaces, or a tab from the indent selector above the input.',
+      },
+      {
+        question: 'Can I download the formatted CSS?',
+        answer: 'Yes — use the Download button to save the result as a .css file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-09',
+    workbench: 'css',
+    cssMode: 'format',
+  },
+  {
+    slug: 'css-minifier',
+    name: 'CSS Minifier',
+    tagline: 'Strip comments and whitespace from CSS to shrink file size.',
+    metaDescription:
+      'Free online CSS minifier. Strip comments and unnecessary whitespace from your stylesheet to reduce file size, without corrupting strings or calc() expressions.',
+    categoryId: 'web',
+    keywords: ['css minifier', 'minify css', 'compress css', 'css compressor', 'shrink css'],
+    h1: 'CSS Minifier',
+    intro: [
+      'Paste your CSS below to strip comments and collapse unnecessary whitespace, shrinking the file for production without changing what it renders. This uses the same structural parser as the CSS Formatter, so it never corrupts a quoted string, a `url(...)`, or the spacing inside `calc()` that a careless minifier could easily break.',
+      'Everything runs locally in your browser using a background thread — your CSS is never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'What gets removed — and what stays untouched',
+        paragraphs: [
+          'Regular comments, indentation, line breaks, and extra spaces around selectors, colons, and braces are all removed. A comment starting with `/*!` (a common convention for license banners) is preserved rather than stripped. Spacing inside `calc()` is always kept as at least a single space around `+` and `-`, since removing it would silently change what the expression computes — a real risk with naive regex-based minifiers.',
+        ],
+      },
+      {
+        heading: 'How to minify CSS',
+        paragraphs: [
+          '1. Paste your CSS into the input box above, or click "Sample" to try it with example styles. 2. Click "Minify." 3. Copy the result or download it as a .css file, ready to ship.',
+        ],
+      },
+      {
+        heading: 'Looking for readable output instead?',
+        paragraphs: [
+          'Use the CSS Formatter to re-indent a stylesheet for readability — it shares the same input box, so you can switch between the two without losing what you pasted.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Minifying runs locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger stylesheets. Your CSS is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does a CSS minifier do?',
+        answer: 'It removes comments, indentation, and unnecessary whitespace from a stylesheet to reduce its file size without changing how it renders.',
+      },
+      {
+        question: 'Can minifying break my CSS?',
+        answer:
+          "This tool is built to avoid that: it parses your CSS structurally rather than doing a blind text replace, so quoted strings, url() values, and the spacing inside calc() expressions are preserved exactly rather than corrupted.",
+      },
+      {
+        question: 'Are all comments removed?',
+        answer:
+          'Regular comments are stripped. A comment starting with `/*!` — the common convention for license or attribution banners — is kept in the output.',
+      },
+      {
+        question: 'Is my CSS uploaded to a server?',
+        answer: 'No. Minifying runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I download the minified CSS?',
+        answer: 'Yes — use the Download button to save the result as a .css file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-10',
+    workbench: 'css',
+    cssMode: 'minify',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

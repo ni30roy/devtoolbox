@@ -227,3 +227,14 @@ export function CodeIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function PaletteIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 4a8 8 0 1 0 0 16c1.1 0 1.6-.7 1.6-1.5 0-.4-.2-.7-.4-1-.2-.3-.4-.6-.4-1 0-.8.7-1.5 1.5-1.5H16a3 3 0 0 0 3-3 7 7 0 0 0-7-8Z" />
+      <circle cx="8" cy="10.5" r="1" fill="currentColor" stroke="none" />
+      <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none" />
+      <circle cx="16" cy="10.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
