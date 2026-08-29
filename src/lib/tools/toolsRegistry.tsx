@@ -21,6 +21,7 @@ const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> =
   'regex-tester': lazy(() => import('@/pages/tools/RegexTesterToolPage')),
   'color-converter': lazy(() => import('@/pages/tools/ColorConverterToolPage')),
   'html-entity': lazy(() => import('@/pages/tools/HtmlEntityToolPage')),
+  'url-parser': lazy(() => import('@/pages/tools/UrlParserToolPage')),
   base64: lazy(() => import('@/pages/tools/Base64ToolPage')),
   url: lazy(() => import('@/pages/tools/UrlToolPage')),
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),

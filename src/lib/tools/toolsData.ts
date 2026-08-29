@@ -1613,6 +1613,72 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-16',
     workbench: 'html-entity',
   },
+  {
+    slug: 'url-parser',
+    name: 'URL Parser',
+    tagline: 'Break a URL down into its protocol, host, path, and query parameters.',
+    metaDescription:
+      'Free online URL parser. Break any URL down into its protocol, username, host, port, path, query parameters, and hash instantly.',
+    categoryId: 'web',
+    keywords: ['url parser', 'parse url', 'url breakdown', 'query string parser', 'url components'],
+    h1: 'URL Parser',
+    intro: [
+      "Paste a URL and see it broken down into every component — protocol, credentials, host, port, path, hash — plus its query parameters listed individually, including repeated keys. This uses the browser's own native URL parser, the same one used for page navigation, so the result matches exactly what your code gets from `new URL(...)`.",
+      'Everything runs locally in your browser — nothing you paste is ever uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'A couple of native-parser behaviors worth knowing',
+        paragraphs: [
+          'Internationalized domain names are normalized to their ASCII "punycode" form (e.g. 例え.jp becomes xn--r8jz45g.jp) — that\'s the actual form used on the wire, not a bug in the parser. In a query string, a literal + is treated as a space (standard form-encoding behavior), while an encoded %2B decodes to a literal plus — worth knowing if a value looks different from what you typed.',
+        ],
+      },
+      {
+        heading: "If parsing fails",
+        paragraphs: [
+          'The most common reason is a missing scheme — "example.com/path" isn\'t a valid URL on its own, it needs "https://" (or another scheme) in front. This tool checks for exactly that case and tells you directly when adding a scheme would fix it.',
+        ],
+      },
+      {
+        heading: 'How to parse a URL',
+        paragraphs: [
+          '1. Paste a URL into the input box above, or click "Sample" to try it with an example. 2. Click "Parse." 3. Copy any individual component with its own Copy button.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does a URL parser do?',
+        answer: 'It breaks a URL into its named parts — protocol, host, port, path, query parameters, and fragment — so you can inspect or copy any piece individually.',
+      },
+      {
+        question: 'Does this handle repeated query parameters?',
+        answer: 'Yes — if a key like `tag` appears more than once in the query string, all of its values are shown together under that key.',
+      },
+      {
+        question: 'Why does my domain look different after parsing?',
+        answer:
+          'International domain names are normalized to ASCII "punycode" form by the browser\'s URL parser — that\'s the actual form used on the network, not an error.',
+      },
+      {
+        question: 'Why did a + in my query string become a space?',
+        answer:
+          'That\'s standard query-string encoding: a literal + means a space. If you need a literal plus character, it must be percent-encoded as %2B.',
+      },
+      {
+        question: 'What if my URL fails to parse?',
+        answer:
+          'The most common cause is a missing scheme (e.g. pasting "example.com/path" instead of "https://example.com/path") — this tool checks for that specific case and tells you directly when adding a scheme would fix it.',
+      },
+      {
+        question: 'Is my URL uploaded to a server?',
+        answer: 'No. Parsing runs entirely in your browser using the native URL API. Nothing you paste is ever sent over the network.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-17',
+    workbench: 'url-parser',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

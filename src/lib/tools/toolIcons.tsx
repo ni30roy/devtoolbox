@@ -15,6 +15,7 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   'regex-tester': RegexIcon,
   'color-converter': PaletteIcon,
   'html-entity': CodeIcon,
+  'url-parser': LinkIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,

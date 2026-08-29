@@ -40,6 +40,7 @@ export type WorkbenchKind =
   | 'regex-tester'
   | 'color-converter'
   | 'html-entity'
+  | 'url-parser'
   | 'base64'
   | 'url'
   | 'jwt'
