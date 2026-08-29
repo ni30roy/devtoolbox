@@ -13,6 +13,7 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   'xml-formatter': CodeIcon,
   'sql-formatter': DatabaseIcon,
   'regex-tester': RegexIcon,
+  'color-converter': PaletteIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,

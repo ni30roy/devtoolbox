@@ -38,6 +38,7 @@ export type WorkbenchKind =
   | 'xml-formatter'
   | 'sql-formatter'
   | 'regex-tester'
+  | 'color-converter'
   | 'base64'
   | 'url'
   | 'jwt'

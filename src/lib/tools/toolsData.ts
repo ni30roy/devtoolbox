@@ -1493,6 +1493,67 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-14',
     workbench: 'regex-tester',
   },
+  {
+    slug: 'color-converter',
+    name: 'Color Converter',
+    tagline: 'Convert colors between HEX, RGB, HSL, HSB, and CMYK.',
+    metaDescription:
+      'Free online color converter. Convert any color between HEX, RGB, HSL, HSB/HSV, and CMYK instantly, with a live preview swatch.',
+    categoryId: 'web',
+    keywords: ['color converter', 'hex to rgb', 'rgb to hex', 'hex to hsl', 'color picker converter', 'cmyk converter'],
+    h1: 'Color Converter',
+    intro: [
+      'Enter a color in any common format — hex, rgb(), hsl(), or plain "r, g, b" — and see it instantly converted to every other format, alongside a live preview swatch. Alpha transparency is supported throughout, and the swatch shows it against a checkered background so you can see exactly how transparent it is.',
+      'Everything runs locally in your browser using simple, well-defined color math — nothing you enter is ever uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'Supported input formats',
+        paragraphs: [
+          'Hex codes (3, 4, 6, or 8 digits, with or without a leading #), rgb()/rgba() with either comma or modern space-separated syntax and optional percentages, hsl()/hsla() with an optional deg/turn/rad unit on the hue, and plain "r, g, b" triples are all recognized automatically — just paste in whatever format you have.',
+        ],
+      },
+      {
+        heading: 'A note on CMYK',
+        paragraphs: [
+          "CMYK here is computed with the standard RGB-to-CMYK formula used by most software color pickers — it's a reasonable approximation for screen colors, not a color-managed conversion calibrated to a specific printer or paper stock. For real print work, your print provider's color profile is the source of truth, not this (or any) generic web converter.",
+        ],
+      },
+      {
+        heading: 'Why converted values can shift by 1',
+        paragraphs: [
+          "HSL, HSB, and CMYK are all displayed as whole-number percentages. Rounding to a whole number and converting back to RGB can shift a channel value by 1 — that's normal floating-point rounding, not a bug, and it's far too small to be visually noticeable.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What color formats does this support?',
+        answer: 'Input: hex, rgb()/rgba(), hsl()/hsla(), and plain "r, g, b" triples. Output: all of those plus HSB/HSV and CMYK.',
+      },
+      {
+        question: 'Does this support transparency?',
+        answer: 'Yes — alpha is read from 8-digit hex, rgba(), and hsla() input, carried through every output format, and shown in the preview swatch against a checkered background.',
+      },
+      {
+        question: 'Is the CMYK conversion print-accurate?',
+        answer:
+          "No — it's the standard RGB-to-CMYK approximation used by most on-screen color pickers, not a color-managed conversion for a specific printer or paper. Use your print provider's profile for production print work.",
+      },
+      {
+        question: 'Why did my RGB value change slightly after converting to HSL and back?',
+        answer:
+          'HSL/HSB/CMYK values are shown as whole-number percentages, and rounding to a whole number can shift an RGB channel by 1 when converted back — normal rounding, not a bug.',
+      },
+      {
+        question: 'Is my color data uploaded to a server?',
+        answer: 'No. Conversion runs entirely in your browser using plain JavaScript math. Nothing you enter is ever sent over the network.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-15',
+    workbench: 'color-converter',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {
