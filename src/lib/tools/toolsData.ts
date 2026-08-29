@@ -51,6 +51,11 @@ export const categories: ToolCategory[] = [
     name: 'Web',
     description: 'Format, minify, and inspect the markup, styles, and URLs behind every web page.',
   },
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    description: 'Minify and otherwise process JavaScript for production.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -1198,6 +1203,78 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-10',
     workbench: 'css',
     cssMode: 'minify',
+  },
+  {
+    slug: 'javascript-minifier',
+    name: 'JavaScript Minifier',
+    tagline: 'Shrink JavaScript for production using a real parser, not regex.',
+    metaDescription:
+      'Free online JavaScript minifier. Compress and mangle JavaScript for production using terser, a real AST-based minifier — safe with regex, template literals, and ASI.',
+    categoryId: 'javascript',
+    keywords: ['javascript minifier', 'js minifier', 'minify javascript', 'compress javascript', 'javascript compressor'],
+    h1: 'JavaScript Minifier',
+    intro: [
+      "Paste JavaScript below to shrink it for production. This tool uses terser — the same AST-based minifier bundled by default in Vite, Rollup, and Webpack — rather than a naive find-and-replace, so it correctly parses your code first and never gets confused by regex literals that look like division, template literals, or JavaScript's automatic-semicolon-insertion rules.",
+      'Everything runs locally in your browser using a background thread — your source code is never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'Why a real minifier — not a regex-based one — matters',
+        paragraphs: [
+          'JavaScript has several places where a naive text transform can silently break correctness: whether `/` starts a regex literal or means division depends on the preceding token; a `return` followed by a newline can trigger automatic semicolon insertion that makes the next line dead code; template literals can contain `${...}` expressions with their own nested strings and braces. A minifier that doesn\'t fully parse the code before rewriting it can get any of these wrong. Terser parses a complete AST first, so every transformation it makes is based on actual JavaScript semantics.',
+        ],
+      },
+      {
+        heading: 'What minification does here',
+        paragraphs: [
+          'Comments and unnecessary whitespace are removed, expressions are compressed where safe (e.g. constant folding), and variable and function names are shortened (mangled) to reduce size further — the same defaults used when a bundler minifies your code for production. The result is functionally equivalent JavaScript, just smaller.',
+        ],
+      },
+      {
+        heading: 'How to minify JavaScript',
+        paragraphs: [
+          '1. Paste your JavaScript into the input box above, or click "Sample" to try it with example code. 2. Click "Minify JavaScript." 3. Copy the result or download it as a .min.js file.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Minification runs locally in a background thread using terser bundled into the page itself — your code is never sent to a server, logged, or stored. Closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does a JavaScript minifier do?',
+        answer:
+          'It removes comments and unnecessary whitespace, compresses expressions where safe, and shortens variable/function names — producing smaller but functionally equivalent JavaScript.',
+      },
+      {
+        question: 'Is this safe for regex literals, template literals, and ASI edge cases?',
+        answer:
+          "Yes. This tool uses terser, a real parser-based minifier, so it understands your code's actual structure rather than guessing from text patterns — the same engine bundlers like Vite and Rollup use by default.",
+      },
+      {
+        question: 'Will variable names be renamed?',
+        answer:
+          'Yes, by default — mangling short variable and function names is one of the main ways minification reduces size, matching what a production build tool would do.',
+      },
+      {
+        question: 'Is my code uploaded to a server?',
+        answer: 'No. Minification runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'What happens if my JavaScript has a syntax error?',
+        answer: "You'll see the exact error with a line and column number — invalid code is never silently minified into something misleading.",
+      },
+      {
+        question: 'Can I download the minified JavaScript?',
+        answer: 'Yes — use the Download button to save the result as a .min.js file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-11',
+    workbench: 'js-minifier',
   },
 ]
 

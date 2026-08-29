@@ -15,6 +15,7 @@ export type ToolCategoryId =
   | 'date-time'
   | 'data'
   | 'web'
+  | 'javascript'
 
 export interface ToolCategory {
   id: ToolCategoryId
@@ -31,6 +32,7 @@ export type WorkbenchKind =
   | 'csv-to-json'
   | 'html-formatter'
   | 'css'
+  | 'js-minifier'
   | 'base64'
   | 'url'
   | 'jwt'

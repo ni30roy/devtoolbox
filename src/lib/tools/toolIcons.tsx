@@ -9,6 +9,7 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   'csv-to-json': FileJsonIcon,
   'html-formatter': CodeIcon,
   css: PaletteIcon,
+  'js-minifier': CodeIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,
