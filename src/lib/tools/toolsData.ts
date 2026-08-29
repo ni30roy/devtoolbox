@@ -1748,6 +1748,61 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-18',
     workbench: 'password',
   },
+  {
+    slug: 'lorem-ipsum-generator',
+    name: 'Lorem Ipsum Generator',
+    tagline: 'Generate placeholder text by words, sentences, or paragraphs.',
+    metaDescription:
+      'Free online Lorem Ipsum generator. Generate placeholder text by words, sentences, or paragraphs, with the option to start with the classic opening line.',
+    categoryId: 'generators',
+    keywords: ['lorem ipsum generator', 'lorem ipsum', 'placeholder text generator', 'dummy text generator'],
+    h1: 'Lorem Ipsum Generator',
+    intro: [
+      'Generate placeholder text for mockups, layouts, and designs — by words, sentences, or paragraphs. Optionally start with the classic "Lorem ipsum dolor sit amet, consectetur adipiscing elit." opening line that most designers immediately recognize as placeholder text.',
+      'Everything runs locally in your browser — nothing is uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'Why Lorem Ipsum?',
+        paragraphs: [
+          "Lorem Ipsum has been the standard placeholder text for layout and typesetting since the 1500s, derived from a scrambled passage of Cicero's \"de Finibus Bonorum et Malorum.\" Its value is precisely that it doesn't read as meaningful English — reviewers focus on the layout, typography, and spacing instead of getting distracted by (or editing) the actual words.",
+        ],
+      },
+      {
+        heading: 'Choosing a unit',
+        paragraphs: [
+          'Words gives you a single running list of words, useful for filling short labels or testing text truncation. Sentences produces a block of complete sentences, useful for a short blurb or caption. Paragraphs generates full paragraphs separated by blank lines, ready to drop into a page mockup or CMS.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What is Lorem Ipsum?',
+        answer:
+          "It's standard placeholder text used in design and publishing since the 1500s — nonsense Latin-derived text that fills a layout without distracting from it with meaningful content.",
+      },
+      {
+        question: 'Can I generate just a few words instead of full paragraphs?',
+        answer: 'Yes — switch to the Words or Sentences option and set how many you need.',
+      },
+      {
+        question: 'Does this always start with "Lorem ipsum dolor sit amet…"?',
+        answer:
+          'Only if you leave the "Start with \'Lorem ipsum…\'" option checked — uncheck it if you want every generated block to open with different random text instead.',
+      },
+      {
+        question: 'Is this text uploaded anywhere?',
+        answer: 'No. Generation happens entirely in your browser. Nothing is sent to a server, logged, or stored.',
+      },
+      {
+        question: 'Can I download the generated text?',
+        answer: 'Yes — use the Download button to save it as a .txt file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-19',
+    workbench: 'lorem-ipsum',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

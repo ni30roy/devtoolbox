@@ -42,6 +42,7 @@ export type WorkbenchKind =
   | 'html-entity'
   | 'url-parser'
   | 'password'
+  | 'lorem-ipsum'
   | 'base64'
   | 'url'
   | 'jwt'
