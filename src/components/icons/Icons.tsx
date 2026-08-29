@@ -219,3 +219,11 @@ export function TableIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function CodeIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M8.5 8 4 12l4.5 4M15.5 8l4.5 4-4.5 4M13 5l-2 14" />
+    </svg>
+  )
+}

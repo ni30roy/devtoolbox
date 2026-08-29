@@ -46,6 +46,11 @@ export const categories: ToolCategory[] = [
     name: 'Data',
     description: 'Parse and transform structured data files like CSV.',
   },
+  {
+    id: 'web',
+    name: 'Web',
+    description: 'Format, minify, and inspect the markup, styles, and URLs behind every web page.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -982,6 +987,78 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-07',
     workbench: 'csv-to-json',
+  },
+  {
+    slug: 'html-formatter',
+    name: 'HTML Formatter',
+    tagline: 'Beautify messy or minified HTML with consistent indentation.',
+    metaDescription:
+      'Free online HTML formatter and beautifier. Paste minified or messy HTML and get clean, indented markup instantly. Runs entirely in your browser.',
+    categoryId: 'web',
+    keywords: ['html formatter', 'html beautifier', 'format html', 'pretty print html', 'indent html'],
+    h1: 'HTML Formatter & Beautifier',
+    intro: [
+      'Paste in any HTML — a full page or just a fragment — and this tool reformats it with consistent indentation, so nested elements are easy to follow at a glance. It uses a real tag-aware scanner rather than a naive find-and-replace, so attributes containing `>` and quoted values are handled correctly.',
+      'Everything runs locally in your browser using a background thread — your HTML is never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'What this formatter does — and doesn\'t do',
+        paragraphs: [
+          "This tool re-indents your markup based on element nesting; it doesn't parse or \"fix\" your HTML the way a browser's DOM parser would. That's a deliberate choice: a DOM parser silently reorders misplaced content, adds implied elements, and lowercases tags and attributes per the HTML5 parsing algorithm — all of which would rewrite your document instead of just formatting it. If your HTML has mismatched tags, the indentation may not come out perfectly, but nothing is silently rewritten or removed.",
+        ],
+      },
+      {
+        heading: 'How whitespace-sensitive content is handled',
+        paragraphs: [
+          "The contents of `<pre>` and `<textarea>` are rendered exactly as written, including whitespace — so this tool never touches what's inside them, byte for byte. `<script>` and `<style>` blocks aren't visually rendered, so their content is placed on its own indented lines for readability without changing what runs or what applies.",
+        ],
+      },
+      {
+        heading: 'How to format HTML',
+        paragraphs: [
+          '1. Paste your HTML into the input box above, or click "Sample" to try it with example markup. 2. Choose an indent size. 3. Click "Format HTML." 4. Copy the result or download it as an .html file.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Formatting runs locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger documents. Your HTML is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does an HTML formatter do?',
+        answer:
+          'It re-indents your markup so nested elements are easy to read, without changing what the page actually renders.',
+      },
+      {
+        question: 'Will this fix broken or invalid HTML?',
+        answer:
+          "No — it formats structurally well-formed HTML. It won't silently reorder, remove, or rewrite content the way a browser's HTML parser does; if tags are mismatched, the output may look off in that area, but nothing is corrected behind your back.",
+      },
+      {
+        question: 'Does this touch the contents of <pre> or <textarea>?',
+        answer:
+          "No. Those elements render whitespace exactly as written, so their content is preserved byte-for-byte rather than being reformatted.",
+      },
+      {
+        question: 'Is my HTML uploaded to a server?',
+        answer: 'No. Formatting runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I choose the indent size?',
+        answer: 'Yes — pick 2 spaces, 4 spaces, or a tab from the indent selector above the input.',
+      },
+      {
+        question: 'Can I download the formatted HTML?',
+        answer: 'Yes — use the Download button to save the result as an .html file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-08',
+    workbench: 'html-formatter',
   },
 ]
 

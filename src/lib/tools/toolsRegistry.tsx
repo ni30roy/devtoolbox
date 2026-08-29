@@ -13,6 +13,7 @@ const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> =
   'json-to-yaml': lazy(() => import('@/pages/tools/JsonToYamlToolPage')),
   'json-to-csv': lazy(() => import('@/pages/tools/JsonToCsvToolPage')),
   'csv-to-json': lazy(() => import('@/pages/tools/CsvToJsonToolPage')),
+  'html-formatter': lazy(() => import('@/pages/tools/HtmlFormatterToolPage')),
   base64: lazy(() => import('@/pages/tools/Base64ToolPage')),
   url: lazy(() => import('@/pages/tools/UrlToolPage')),
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),
