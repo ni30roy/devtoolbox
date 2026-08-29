@@ -61,6 +61,11 @@ export const categories: ToolCategory[] = [
     name: 'Database',
     description: 'Format and clean up database queries.',
   },
+  {
+    id: 'developer',
+    name: 'Developer',
+    description: 'General-purpose utilities for everyday coding tasks.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -1422,6 +1427,71 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-13',
     workbench: 'sql-formatter',
+  },
+  {
+    slug: 'regex-tester',
+    name: 'Regex Tester',
+    tagline: 'Test regular expressions against your own text, with live matches.',
+    metaDescription:
+      'Free online regex tester. Test JavaScript regular expressions against sample text with live match highlighting, capture groups, and named groups.',
+    categoryId: 'developer',
+    keywords: ['regex tester', 'regular expression tester', 'regex online', 'test regex', 'javascript regex tester'],
+    h1: 'Regex Tester',
+    intro: [
+      "Type a pattern and some text, and matches highlight instantly as you type. This tests against JavaScript's actual built-in regular expression engine — the same one your code runs on — so what you see here is exactly what `String.match()` or `RegExp.exec()` would find, not an approximation.",
+      'Everything runs locally in your browser: your pattern and test text are never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'Reading the results',
+        paragraphs: [
+          'Matches are highlighted directly in your test string and listed on the right with their position and any capture groups — both numbered (`(...)`) and named (`(?<name>...)`). Toggle the g flag to see every match instead of just the first, or i for case-insensitive matching, m to make ^ and $ match at line breaks, s to let . match newlines, and u for full Unicode-aware matching.',
+        ],
+      },
+      {
+        heading: 'A note on runaway patterns',
+        paragraphs: [
+          "Some regex patterns can suffer from \"catastrophic backtracking\" — a pathological combination of pattern and input that takes an extremely long time to evaluate. Matching runs in a background thread with a timeout specifically so a pattern like that can't freeze this page; you'll see a clear message instead, and can keep working.",
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Matching runs locally using your browser's own JavaScript engine. Your pattern and test text are never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What regex engine does this use?',
+        answer:
+          "Your browser's own native JavaScript RegExp engine — the exact same one that runs when your code calls .match(), .test(), or .exec(). There's no separate regex implementation to cause discrepancies.",
+      },
+      {
+        question: 'How do I see all matches instead of just the first?',
+        answer: 'Turn on the g (global) flag — without it, only the first match in the test string is shown, matching how JavaScript itself behaves.',
+      },
+      {
+        question: 'Does this show capture groups?',
+        answer: 'Yes — both numbered groups from `(...)` and named groups from `(?<name>...)` are listed under each match.',
+      },
+      {
+        question: 'What happens with an invalid pattern?',
+        answer: "You'll see the exact SyntaxError JavaScript itself would throw, so you can see precisely what's wrong with the pattern.",
+      },
+      {
+        question: 'Can a bad pattern freeze the page?',
+        answer:
+          "No — matching runs in a background thread with a timeout. If a pattern takes too long (for example, due to catastrophic backtracking), you'll get a clear error instead of a frozen tab.",
+      },
+      {
+        question: 'Is my test text uploaded anywhere?',
+        answer: 'No. Matching runs entirely in your browser. Nothing you type is ever sent over the network.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-14',
+    workbench: 'regex-tester',
   },
 ]
 

@@ -228,6 +228,16 @@ export function CodeIcon(props: IconProps) {
   )
 }
 
+export function RegexIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M17 5 7 19" />
+      <circle cx="6" cy="6" r="1.4" fill="currentColor" stroke="none" />
+      <path d="M11 10v6M8.5 11.5l5 3M15.5 11.5l-5 3" />
+    </svg>
+  )
+}
+
 export function DatabaseIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
