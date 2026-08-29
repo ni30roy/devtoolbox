@@ -17,6 +17,7 @@ const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> =
   css: lazy(() => import('@/pages/tools/CssToolPage')),
   'js-minifier': lazy(() => import('@/pages/tools/JsMinifierToolPage')),
   'xml-formatter': lazy(() => import('@/pages/tools/XmlFormatterToolPage')),
+  'sql-formatter': lazy(() => import('@/pages/tools/SqlFormatterToolPage')),
   base64: lazy(() => import('@/pages/tools/Base64ToolPage')),
   url: lazy(() => import('@/pages/tools/UrlToolPage')),
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),

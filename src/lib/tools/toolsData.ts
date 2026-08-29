@@ -56,6 +56,11 @@ export const categories: ToolCategory[] = [
     name: 'JavaScript',
     description: 'Minify and otherwise process JavaScript for production.',
   },
+  {
+    id: 'database',
+    name: 'Database',
+    description: 'Format and clean up database queries.',
+  },
 ]
 
 export const tools: ToolMeta[] = [
@@ -1346,6 +1351,77 @@ export const tools: ToolMeta[] = [
     popular: false,
     addedAt: '2026-09-12',
     workbench: 'xml-formatter',
+  },
+  {
+    slug: 'sql-formatter',
+    name: 'SQL Formatter',
+    tagline: 'Beautify SQL queries across multiple database dialects.',
+    metaDescription:
+      'Free online SQL formatter and beautifier. Paste a SQL query and get clean, indented SQL instantly, with support for MySQL, PostgreSQL, SQL Server, and more.',
+    categoryId: 'database',
+    keywords: ['sql formatter', 'sql beautifier', 'format sql', 'pretty print sql', 'sql query formatter'],
+    h1: 'SQL Formatter',
+    intro: [
+      'Paste a SQL query below and this tool reformats it with consistent indentation and line breaks, making long joins and nested conditions easy to follow. It uses a real SQL tokenizer with dialect-aware rules — not a find-and-replace — so string literals containing keywords, comments containing semicolons, and dialect-specific quoting (backticks, double quotes, brackets) are all handled correctly rather than corrupted.',
+      'Everything runs locally in your browser using a background thread — your SQL is never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'Why a naive SQL formatter is risky',
+        paragraphs: [
+          "SQL has plenty of places a text-based rewrite can go wrong: a string literal like `'SELECT * FROM secret'` isn't code, a comment can contain a semicolon that looks like a statement terminator, and whether identifiers are quoted with backticks, double quotes, or square brackets depends entirely on the database you're targeting. This tool tokenizes the query first — recognizing strings, comments, and identifiers as atomic units — so none of that gets misinterpreted as formatting instructions.",
+        ],
+      },
+      {
+        heading: 'Supported dialects',
+        paragraphs: [
+          'Standard SQL, MySQL, PostgreSQL, SQL Server (T-SQL), SQLite, BigQuery, and Oracle (PL/SQL) are available from the dialect selector — pick the one matching your database so dialect-specific syntax (like PostgreSQL\'s `::` casts or MySQL\'s backtick-quoted identifiers) formats correctly.',
+        ],
+      },
+      {
+        heading: 'How to format SQL',
+        paragraphs: [
+          '1. Paste your SQL into the input box above, or click "Sample" to try it with an example query. 2. Choose the dialect that matches your database, and an indent size. 3. Click "Format SQL." 4. Copy the result or download it as a .sql file.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Formatting runs locally in a background thread — your SQL, including anything sensitive like table or column names, is never sent to a server, logged, or stored. Closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does a SQL formatter do?',
+        answer: 'It re-indents a query with consistent spacing and line breaks around clauses like SELECT, FROM, WHERE, and JOIN, making it easier to read.',
+      },
+      {
+        question: 'Will this corrupt string literals or comments?',
+        answer:
+          "No — the query is tokenized first, so string literals (even ones containing SQL keywords) and comments (even ones containing semicolons) are recognized as atomic units and left exactly as written.",
+      },
+      {
+        question: 'Which SQL dialects are supported?',
+        answer: 'Standard SQL, MySQL, PostgreSQL, SQL Server (T-SQL), SQLite, BigQuery, and Oracle (PL/SQL) — pick the one that matches your database from the dialect selector.',
+      },
+      {
+        question: 'Is my SQL uploaded to a server?',
+        answer: 'No. Formatting runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Will this validate my SQL or catch errors?',
+        answer:
+          "No — it formats best-effort rather than validating against a schema or strict grammar. If something can't be formatted sensibly, you'll see an error rather than a silently mangled query.",
+      },
+      {
+        question: 'Can I download the formatted SQL?',
+        answer: 'Yes — use the Download button to save the result as a .sql file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-13',
+    workbench: 'sql-formatter',
   },
 ]
 

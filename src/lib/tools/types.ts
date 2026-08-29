@@ -16,6 +16,7 @@ export type ToolCategoryId =
   | 'data'
   | 'web'
   | 'javascript'
+  | 'database'
 
 export interface ToolCategory {
   id: ToolCategoryId
@@ -34,6 +35,7 @@ export type WorkbenchKind =
   | 'css'
   | 'js-minifier'
   | 'xml-formatter'
+  | 'sql-formatter'
   | 'base64'
   | 'url'
   | 'jwt'

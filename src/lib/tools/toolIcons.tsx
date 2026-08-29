@@ -1,4 +1,4 @@
-import { BracesIcon, ClockIcon, CodeIcon, FileJsonIcon, HashIcon, LinkIcon, PaletteIcon, ShieldIcon, SparklesIcon, SwapIcon, TableIcon } from '@/components/icons/Icons'
+import { BracesIcon, ClockIcon, CodeIcon, DatabaseIcon, FileJsonIcon, HashIcon, LinkIcon, PaletteIcon, ShieldIcon, SparklesIcon, SwapIcon, TableIcon } from '@/components/icons/Icons'
 import type { WorkbenchKind } from './types'
 
 /** One icon per workbench kind — add an entry here when a new kind of tool ships. */
@@ -11,6 +11,7 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   css: PaletteIcon,
   'js-minifier': CodeIcon,
   'xml-formatter': CodeIcon,
+  'sql-formatter': DatabaseIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,

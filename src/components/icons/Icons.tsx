@@ -228,6 +228,16 @@ export function CodeIcon(props: IconProps) {
   )
 }
 
+export function DatabaseIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <ellipse cx="12" cy="6" rx="7" ry="2.5" />
+      <path d="M5 6v12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6" />
+      <path d="M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5" />
+    </svg>
+  )
+}
+
 export function PaletteIcon(props: IconProps) {
   return (
     <svg {...base} {...props}>
