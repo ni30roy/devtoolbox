@@ -33,6 +33,7 @@ export type WorkbenchKind =
   | 'html-formatter'
   | 'css'
   | 'js-minifier'
+  | 'xml-formatter'
   | 'base64'
   | 'url'
   | 'jwt'

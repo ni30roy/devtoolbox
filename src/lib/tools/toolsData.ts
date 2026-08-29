@@ -1276,6 +1276,77 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-11',
     workbench: 'js-minifier',
   },
+  {
+    slug: 'xml-formatter',
+    name: 'XML Formatter',
+    tagline: 'Beautify XML with consistent indentation, without touching text content.',
+    metaDescription:
+      'Free online XML formatter and beautifier. Paste messy or minified XML and get clean, indented markup instantly — text content is never altered.',
+    categoryId: 'web',
+    keywords: ['xml formatter', 'xml beautifier', 'format xml', 'pretty print xml', 'indent xml'],
+    h1: 'XML Formatter & Beautifier',
+    intro: [
+      'Paste in any XML — a full document or a fragment — and this tool reformats it with consistent indentation. It uses a real tag-aware scanner, and it never reformats an element that contains actual text content, since unlike HTML, XML has no rule that collapses whitespace — adding so much as a newline inside `<name>John</name>` would change the value a consumer reads back out.',
+      'Everything runs locally in your browser using a background thread — your XML is never uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'The rule this formatter follows for text content',
+        paragraphs: [
+          'An element that contains nothing but child elements (and whitespace used purely for indentation) is safe to re-indent, since that whitespace carries no meaning. An element that contains actual text — a name, a number, a sentence, "mixed content" like `<p>Hello <b>world</b>!</p>` — has its entire content left completely untouched, byte-for-byte, including whatever whitespace was already there. This is the same reasoning this site\'s HTML Formatter applies to `<pre>` and `<textarea>`, just decided per-element instead of by a fixed tag list, since XML has no fixed vocabulary of which elements matter.',
+        ],
+      },
+      {
+        heading: 'What else is handled correctly',
+        paragraphs: [
+          'The XML declaration (`<?xml version="1.0"?>`), DOCTYPE declarations, comments, CDATA sections, processing instructions, self-closing tags, and namespaced tags (`<soap:Envelope>`) are all recognized and preserved. CDATA content is never reformatted, since it exists specifically to hold text that shouldn\'t be parsed as markup.',
+        ],
+      },
+      {
+        heading: 'How to format XML',
+        paragraphs: [
+          '1. Paste your XML into the input box above, or click "Sample" to try it with example data. 2. Choose an indent size. 3. Click "Format XML." 4. Copy the result or download it as an .xml file.',
+        ],
+      },
+      {
+        heading: 'Privacy: everything stays in your browser',
+        paragraphs: [
+          "Formatting runs locally using your browser's own JavaScript engine, offloaded to a background thread so the page stays responsive even on larger documents. Your XML is never sent to a server, logged, or stored — closing the tab leaves nothing behind.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What does an XML formatter do?',
+        answer: 'It re-indents your document based on element nesting, making structure easy to scan, without changing the data it represents.',
+      },
+      {
+        question: 'Will this change the text content of my elements?',
+        answer:
+          "No — any element containing actual text (not just whitespace used for indentation) is left completely untouched, including its exact original whitespace. Only elements that contain nothing but child elements get re-indented.",
+      },
+      {
+        question: 'Does this handle CDATA sections?',
+        answer: "Yes — CDATA content is recognized and never reformatted, since it exists to hold text that shouldn't be parsed as markup in the first place.",
+      },
+      {
+        question: 'Will this fix invalid or malformed XML?',
+        answer:
+          "No — it formats structurally well-formed XML. It doesn't validate against a schema or silently correct mismatched tags; if tags don't match up, the output may look off in that area rather than being corrected behind your back.",
+      },
+      {
+        question: 'Is my XML uploaded to a server?',
+        answer: 'No. Formatting runs entirely in your browser, in a background thread. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I download the formatted XML?',
+        answer: 'Yes — use the Download button to save the result as an .xml file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-12',
+    workbench: 'xml-formatter',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

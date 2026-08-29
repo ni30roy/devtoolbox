@@ -10,6 +10,7 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   'html-formatter': CodeIcon,
   css: PaletteIcon,
   'js-minifier': CodeIcon,
+  'xml-formatter': CodeIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,
