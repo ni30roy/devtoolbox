@@ -1554,6 +1554,65 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-15',
     workbench: 'color-converter',
   },
+  {
+    slug: 'html-entity-encoder-decoder',
+    name: 'HTML Entity Encoder/Decoder',
+    tagline: 'Escape text for safe HTML embedding, or decode HTML entities back to text.',
+    metaDescription:
+      'Free online HTML entity encoder and decoder. Escape special characters for safe HTML embedding, or decode named, decimal, and hex HTML entities back to text.',
+    categoryId: 'encoding',
+    keywords: ['html entity encoder', 'html entity decoder', 'html escape', 'html unescape', 'decode html entities'],
+    h1: 'HTML Entity Encoder/Decoder',
+    intro: [
+      "Encode text so it's safe to embed inside HTML — escaping &, <, >, \", and ' into their entity equivalents — or decode HTML-entity-encoded text back to plain text. Decoding runs through the browser's own HTML parser, so named entities (&eacute;), decimal (&#233;), and hex (&#xE9;) forms all resolve exactly the way a real browser would render them.",
+      'Everything runs locally in your browser — nothing you type or paste is ever uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'Why encode HTML entities?',
+        paragraphs: [
+          'If user-supplied or dynamic text is inserted directly into an HTML page without escaping it first, characters like < and > can be interpreted as markup instead of literal text — at best breaking the layout, at worst opening the door to HTML/script injection. Encoding replaces the characters that have special meaning in HTML with their entity equivalents, so the text renders exactly as written no matter what it contains.',
+        ],
+      },
+      {
+        heading: 'What gets escaped',
+        paragraphs: [
+          '&, <, and > are always escaped, since those are meaningful in HTML text content anywhere. Straight and single quotes (" and \') are also escaped, since those matter whenever the text ends up inside an attribute value (like `title="..."`) rather than plain text content — covering both cases keeps the output safe wherever it\'s used.',
+        ],
+      },
+      {
+        heading: 'Decoding matches real browser behavior',
+        paragraphs: [
+          "Decoding is done by handing the text to the browser's actual HTML parser rather than a hand-rolled lookup table, so obscure edge cases match reality too — for instance, HTML5 allows certain legacy named entities to be recognized even without a trailing semicolon, which a simplified decoder might miss or get wrong.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'What characters does the encoder escape?',
+        answer: '&, <, >, ", and \' — the full set needed to safely embed text in HTML content or inside an attribute value.',
+      },
+      {
+        question: 'Does the decoder handle named, decimal, and hex entities?',
+        answer: 'Yes — &amp;, &#233;, and &#xE9; (and any other valid HTML entity) all decode correctly, since decoding runs through the browser\'s own HTML parser.',
+      },
+      {
+        question: 'Is this the same as encoding for a URL?',
+        answer: "No — HTML entity encoding and URL encoding solve different problems and use different escape sequences. Use this tool for text going into HTML, and the URL Encoder/Decoder for text going into a URL.",
+      },
+      {
+        question: 'Is my text uploaded to a server?',
+        answer: 'No. Both encoding and decoding run entirely in your browser. Nothing you type or paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I download the result?',
+        answer: 'Yes — use the Download button to save the result as a .txt file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-16',
+    workbench: 'html-entity',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {
