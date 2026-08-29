@@ -22,6 +22,7 @@ const workbenchPages: Record<WorkbenchKind, ComponentType<{ tool: ToolMeta }>> =
   'color-converter': lazy(() => import('@/pages/tools/ColorConverterToolPage')),
   'html-entity': lazy(() => import('@/pages/tools/HtmlEntityToolPage')),
   'url-parser': lazy(() => import('@/pages/tools/UrlParserToolPage')),
+  password: lazy(() => import('@/pages/tools/PasswordToolPage')),
   base64: lazy(() => import('@/pages/tools/Base64ToolPage')),
   url: lazy(() => import('@/pages/tools/UrlToolPage')),
   jwt: lazy(() => import('@/pages/tools/JwtToolPage')),

@@ -1679,6 +1679,75 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-17',
     workbench: 'url-parser',
   },
+  {
+    slug: 'password-generator',
+    name: 'Password Generator',
+    tagline: 'Generate strong, random passwords using a cryptographically secure source.',
+    metaDescription:
+      'Free online password generator. Create strong, random passwords with configurable length and character types, using a cryptographically secure random source.',
+    categoryId: 'generators',
+    keywords: ['password generator', 'random password generator', 'strong password generator', 'secure password'],
+    h1: 'Password Generator',
+    intro: [
+      "Generate a strong, random password with the length and character types you choose. Every character comes from crypto.getRandomValues() — the browser's cryptographically secure random number generator — never Math.random(), which is fast but predictable and unsuitable for anything security-sensitive.",
+      "Nothing about what you generate is ever sent anywhere — there'd be nothing meaningful to send even if it were, since each password depends only on random bytes generated locally.",
+    ],
+    details: [
+      {
+        heading: 'Why Math.random() is not good enough',
+        paragraphs: [
+          "JavaScript's Math.random() is designed for speed, not unpredictability — its output can, in principle, be predicted from enough prior outputs on some engines, which is exactly the property you don't want in a password generator. crypto.getRandomValues() is backed by the operating system's cryptographically secure random number generator, the same class of source used to generate encryption keys.",
+        ],
+      },
+      {
+        heading: 'How character selection avoids bias',
+        paragraphs: [
+          'Picking a random character with `randomByte % charsetLength` is a common but subtly biased approach whenever the charset length doesn\'t evenly divide 256 — some characters end up very slightly more likely than others. This generator uses rejection sampling instead: it draws a byte and discards it (redrawing) whenever using it would introduce that bias, so every character is exactly equally likely.',
+        ],
+      },
+      {
+        heading: 'Guaranteed character variety',
+        paragraphs: [
+          "If you select multiple character types, the generator guarantees at least one of each appears — useful for sites that require a mix of uppercase, lowercase, numbers, and symbols. The required characters are placed using the same cryptographically random shuffle as the rest of the password, so they don't predictably land in fixed positions.",
+        ],
+      },
+      {
+        heading: 'Reading the strength estimate',
+        paragraphs: [
+          "The entropy shown is calculated directly from length and charset size (bits = length × log2(charset size)) — a standard, objective measure of how many attempts a brute-force guess would need on average, not a guess about whether the password resembles a dictionary word or pattern.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Is this actually secure?',
+        answer:
+          "Yes — every character is generated using crypto.getRandomValues(), a cryptographically secure random source, with rejection sampling to eliminate selection bias. Nothing is logged, stored, or sent over the network.",
+      },
+      {
+        question: 'Why not just use Math.random()?',
+        answer:
+          "Math.random() is not designed to be unpredictable — it prioritizes speed over unpredictability, which makes it unsuitable for anything security-sensitive like a password or token.",
+      },
+      {
+        question: 'Does it guarantee a mix of character types?',
+        answer:
+          'Yes — if you select more than one character type, at least one character from each selected type is guaranteed to appear, placed randomly rather than in fixed positions.',
+      },
+      {
+        question: 'What does the entropy number mean?',
+        answer:
+          "It's the number of bits of randomness in the password, calculated from its length and character set size — a higher number means exponentially more possible passwords an attacker would have to try.",
+      },
+      {
+        question: 'Is my generated password sent anywhere?',
+        answer: 'No. Generation happens entirely in your browser. Nothing is sent to a server, logged, or stored.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-18',
+    workbench: 'password',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

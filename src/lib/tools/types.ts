@@ -41,6 +41,7 @@ export type WorkbenchKind =
   | 'color-converter'
   | 'html-entity'
   | 'url-parser'
+  | 'password'
   | 'base64'
   | 'url'
   | 'jwt'
