@@ -1861,6 +1861,112 @@ export const tools: ToolMeta[] = [
     addedAt: '2026-09-20',
     workbench: 'random-number',
   },
+  {
+    slug: 'hex-encoder-decoder',
+    name: 'Hex Encoder/Decoder',
+    tagline: 'Convert text to hexadecimal bytes and back, with full Unicode support.',
+    metaDescription:
+      'Free online hex encoder and decoder. Convert text to hexadecimal and back, with full Unicode support for emoji, accents, and non-Latin scripts.',
+    categoryId: 'encoding',
+    keywords: ['hex encoder', 'hex decoder', 'text to hex', 'hex to text', 'hexadecimal converter'],
+    h1: 'Hex Encoder/Decoder',
+    intro: [
+      'Convert text to its hexadecimal byte representation, or decode hex back to text. Like this site\'s Base64 tool, text is converted to real UTF-8 bytes first, so accented characters, emoji, and non-Latin scripts round-trip correctly rather than breaking on anything outside basic ASCII.',
+      'Everything runs locally in your browser — nothing you type or paste is ever uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'How encoding works',
+        paragraphs: [
+          "Your text is converted to UTF-8 bytes, and each byte is written as a two-digit hexadecimal number — 00 through ff. \"A\" becomes 41, \"€\" becomes three bytes (e282ac), since it's a multi-byte character in UTF-8. Toggle uppercase and space-separated formatting to match whatever convention you need.",
+        ],
+      },
+      {
+        heading: 'Flexible decoding',
+        paragraphs: [
+          'Decoding accepts hex with or without spaces between bytes, and strips "0x" prefixes automatically — so hex copied from a debugger, a log, or a C-style byte array all work without manual cleanup first.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does this support Unicode text, not just ASCII?',
+        answer: 'Yes — text is converted to real UTF-8 bytes before hex encoding, so accented characters, emoji, and non-Latin scripts round-trip correctly.',
+      },
+      {
+        question: 'Can I decode hex with spaces or a "0x" prefix?',
+        answer: 'Yes — spaces between byte pairs and "0x" prefixes are both stripped automatically before decoding.',
+      },
+      {
+        question: 'What happens if the hex decodes to invalid text?',
+        answer: "You'll see a clear message explaining the bytes are valid hex but not valid UTF-8 text — likely binary data rather than text.",
+      },
+      {
+        question: 'Is my data uploaded to a server?',
+        answer: 'No. Both encoding and decoding run entirely in your browser. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I download the result?',
+        answer: 'Yes — use the Download button to save the result as a .txt file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-21',
+    workbench: 'hex',
+  },
+  {
+    slug: 'binary-encoder-decoder',
+    name: 'Binary Encoder/Decoder',
+    tagline: 'Convert text to binary (0s and 1s) and back, with full Unicode support.',
+    metaDescription:
+      'Free online binary encoder and decoder. Convert text to binary (0s and 1s) and back, with full Unicode support for emoji, accents, and non-Latin scripts.',
+    categoryId: 'encoding',
+    keywords: ['binary encoder', 'binary decoder', 'text to binary', 'binary to text', 'binary converter'],
+    h1: 'Binary Encoder/Decoder',
+    intro: [
+      'Convert text to its binary (base-2) byte representation, or decode binary back to text. Like this site\'s Base64 and Hex tools, text is converted to real UTF-8 bytes first, so accented characters, emoji, and non-Latin scripts round-trip correctly rather than breaking on anything outside basic ASCII.',
+      'Everything runs locally in your browser — nothing you type or paste is ever uploaded to a server, logged, or stored anywhere.',
+    ],
+    details: [
+      {
+        heading: 'How encoding works',
+        paragraphs: [
+          'Your text is converted to UTF-8 bytes, and each byte is written as an 8-digit binary number (00000000 through 11111111), separated by spaces. "A" becomes 01000001; a multi-byte character produces multiple 8-bit groups, one per UTF-8 byte.',
+        ],
+      },
+      {
+        heading: 'Flexible decoding',
+        paragraphs: [
+          'Decoding accepts binary grouped into bytes separated by spaces, or one continuous run of bits with no separators — as long as the total number of bits is a multiple of eight.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: 'Does this support Unicode text, not just ASCII?',
+        answer: 'Yes — text is converted to real UTF-8 bytes before binary encoding, so accented characters, emoji, and non-Latin scripts round-trip correctly.',
+      },
+      {
+        question: 'Do I need spaces between each byte when decoding?',
+        answer: "No — spaces are optional. A continuous run of bits works too, as long as the total length is a multiple of eight.",
+      },
+      {
+        question: 'What happens if the binary decodes to invalid text?',
+        answer: "You'll see a clear message explaining the bytes are valid binary but not valid UTF-8 text — likely binary data rather than text.",
+      },
+      {
+        question: 'Is my data uploaded to a server?',
+        answer: 'No. Both encoding and decoding run entirely in your browser. Nothing you paste is ever sent over the network.',
+      },
+      {
+        question: 'Can I download the result?',
+        answer: 'Yes — use the Download button to save the result as a .txt file, or Copy to put it directly on your clipboard.',
+      },
+    ],
+    popular: false,
+    addedAt: '2026-09-22',
+    workbench: 'binary',
+  },
 ]
 
 export function getToolBySlug(slug: string): ToolMeta | undefined {

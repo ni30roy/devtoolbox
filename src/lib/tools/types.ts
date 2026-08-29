@@ -44,6 +44,8 @@ export type WorkbenchKind =
   | 'password'
   | 'lorem-ipsum'
   | 'random-number'
+  | 'hex'
+  | 'binary'
   | 'base64'
   | 'url'
   | 'jwt'

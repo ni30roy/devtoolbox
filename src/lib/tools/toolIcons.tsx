@@ -19,6 +19,8 @@ export const toolIcons: Record<WorkbenchKind, typeof FileJsonIcon> = {
   password: LockIcon,
   'lorem-ipsum': SparklesIcon,
   'random-number': DiceIcon,
+  hex: HashIcon,
+  binary: HashIcon,
   base64: SwapIcon,
   url: LinkIcon,
   jwt: ShieldIcon,
